@@ -17,9 +17,33 @@ nav a {
   text-decoration: none;
   font-size: 20px;
   color: #333;
+  position: relative;
+  padding-bottom: 5px;
 }
-nav a:hover {
-  color: #0077cc;
+
+/* Animated underline */
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #3b8686; /* teal underline */
+  transition: width 0.3s ease-in-out;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Highlight active page */
+nav a.active {
+  font-weight: bold;
+  color: #3b8686;
+}
+nav a.active::after {
+  width: 100%;
 }
 
 /* Headings */
