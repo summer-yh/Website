@@ -1,0 +1,42 @@
+/* General page styling */
+body {
+  font-family: 'Poppins', sans-serif; /* stylish Google Font */
+  text-align: center;
+  background-color: #f5f5dc; /* light beige */
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation menu */
+nav {
+  background-color: #ddd;
+  padding: 15px;
+}
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #333;
+}
+nav a:hover {
+  color: #0077cc;
+}
+
+/* Headings */
+h1 {
+  font-size: 45px; /* bigger stylish font */
+  color: #333;
+  margin-top: 40px;
+}
+p {
+  color: #555;
+  font-size: 20px;
+}
+
+/* Images */
+img {
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
