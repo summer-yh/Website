@@ -119,3 +119,24 @@ img:hover {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* Drawing gallery */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.gallery img {
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.gallery img:hover {
+  transform: scale(1.08);
+}
