@@ -2,9 +2,11 @@
 body {
   font-family: 'Poppins', sans-serif; /* stylish Google Font */
   text-align: center;
-  background-color: #f5f5dc; /* light beige */
+  background: linear-gradient(270deg, #f5f5dc, #e8dfc7, #f5f5dc);
+  background-size: 600% 600%;
   margin: 0;
   padding: 0;
+  animation: gradientShift 15s ease infinite; /* background animation */
 }
 
 /* Navigation menu */
@@ -32,7 +34,6 @@ nav a::after {
   background-color: #3b8686; /* teal underline */
   transition: width 0.3s ease-in-out;
 }
-
 nav a:hover::after {
   width: 100%;
 }
@@ -48,13 +49,26 @@ nav a.active::after {
 
 /* Headings */
 h1 {
-  font-size: 45px; /* bigger stylish font */
+  font-size: 45px;
   color: #333;
   margin-top: 40px;
+  opacity: 0; /* for fade-in */
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
 }
+h1:hover {
+  color: #3b8686;
+  text-shadow: 0 0 10px #3b8686; /* glow */
+  transition: all 0.3s ease;
+}
+
+/* Paragraphs */
 p {
   color: #555;
   font-size: 20px;
+  opacity: 0; /* for fade-in */
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.4s;
 }
 
 /* Images */
@@ -63,19 +77,45 @@ img {
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 300px;
+  opacity: 0; /* for fade-in */
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
+  transition: transform 0.3s ease;
 }
-/* Fade-in animation */
-body {
-  animation: fadeIn 1s ease-in;
+img:hover {
+  transform: scale(1.05); /* zoom effect */
 }
 
-@keyframes fadeIn {
+/* Loader (spinning wheel) */
+.loader {
+  border: 8px solid #ddd;
+  border-top: 8px solid #3b8686;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 50px auto;
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(10px); /* slight upward motion */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
