@@ -176,3 +176,47 @@ img:hover {
 #lightbox .close:hover {
   color: #3b8686; /* teal highlight */
 }
+/* Floating Watercolor Blobs */
+.blob {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at 50% 50%, #c3e4d1 0%, #f5f5dc 100%);
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 0; /* behind content */
+  animation: float 10s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-20px) translateX(10px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+/* Watercolor Brush Stroke */
+.brush {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  opacity: 0.3;
+  z-index: 0; /* behind content */
+  animation: paintMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes paintMove {
+  0% { transform: rotate(-10deg) translateX(0); }
+  50% { transform: rotate(-5deg) translateX(10px); }
+  100% { transform: rotate(-10deg) translateX(0); }
+}
+
+/* Hover Glow for h1 and gallery images */
+h1:hover {
+  text-shadow: 0 0 20px rgba(59,134,134,0.5), 0 0 40px rgba(195,228,209,0.3);
+  transition: all 0.4s ease;
+}
+
+.gallery img:hover {
+  filter: brightness(1.1) saturate(1.1);
+  transition: all 0.5s ease;
+}
