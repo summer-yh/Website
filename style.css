@@ -200,3 +200,16 @@ img:hover {
   50% { transform: rotate(-5deg) translateX(10px); }
   100% { transform: rotate(-10deg) translateX(0); }
 }
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 0;
+  animation: drift 12s linear infinite;
+}
+
+@keyframes drift {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-50px) translateX(30px); }
+  100% { transform: translateY(0) translateX(0); }
+}
