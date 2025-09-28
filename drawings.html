@@ -4,75 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Drawings</title>
- <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Loader -->
+  <div class="loader"></div>
+
   <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="drawings.html" class="active">Drawing</a>
+    <a href="drawings.html" class="active">Drawings</a>
   </nav>
-<!-- Watercolor Background Blobs -->
-<div class="blob" style="top: 50px; left: 30px;"></div>
-<div class="blob" style="top: 200px; right: 50px; background: radial-gradient(circle, #fdd6d0, #f5f5dc);"></div>
-<div class="blob" style="top: 400px; left: 150px; background: radial-gradient(circle, #c3e4d1, #f5f5dc);"></div>
 
-<!-- Watercolor Brush Stroke (behind h1) -->
-<div class="brush" style="top: 150px; left: 50%; transform: translateX(-50%) rotate(-10deg); background: url('brush-stroke.png') no-repeat center; background-size: cover;"></div>
+  <!-- Watercolor decorations -->
+  <div class="blob" style="top: 60px; left: 30px; width: 200px; height: 200px;"></div>
+  <div class="blob" style="top: 250px; right: 70px; width: 220px; height: 220px; background: radial-gradient(circle, #fdd6d0, #f5f5dc);"></div>
+  <div class="blob" style="top: 450px; left: 140px; width: 160px; height: 160px; background: radial-gradient(circle, #c3e4d1, #f5f5dc);"></div>
+  <div class="brush" style="top: 180px; left: 50%; transform: translateX(-50%) rotate(-8deg); width: 320px; height: 100px; background: url('brush-stroke.png') no-repeat center; background-size: cover;"></div>
 
-  <!-- Page Content -->
+  <!-- Page content -->
   <h1>My Drawings</h1>
-  <p>Welcome to my drawing gallery! 🎨</p>
-<!-- Lightbox -->
-<div id="lightbox">
-  <span class="close">&times;</span>
-  <img id="lightbox-img" src="" alt="Large view">
-</div>
-  <script>
-  // Lightbox functionality
-  const galleryImages = document.querySelectorAll(".gallery img");
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-  const closeBtn = document.querySelector("#lightbox .close");
+  <p>Click on any drawing to view a larger version!</p>
 
-  galleryImages.forEach(img => {
-    img.addEventListener("click", () => {
-      lightbox.style.display = "flex";
-      lightboxImg.src = img.src;
-    });
-  });
-
-  closeBtn.addEventListener("click", () => {
-    lightbox.style.display = "none";
-  });
-
-  // Close when clicking outside image
-  lightbox.addEventListener("click", (e) => {
-    if (e.target !== lightboxImg) {
-      lightbox.style.display = "none";
-    }
-  });
-</script>
-
-  <!-- Example image placeholders -->
   <div class="gallery">
     <img src="IMG_2262 2.jpg" alt="Drawing 1">
     <img src="IMG_2260 3.jpg" alt="Drawing 2">
     <img src="IMG_1227 2.heic" alt="Drawing 3">
   </div>
 
-  <!-- Optional loader -->
-  <div class="loader"></div>
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Large view">
+  </div>
 
-  <!-- Loader script -->
+  <!-- JavaScript -->
   <script>
+    // Loader
     window.addEventListener("load", function () {
-      const loader = document.querySelector(".loader");
-      loader.classList.add("hidden");
+      document.querySelector(".loader").classList.add("hidden");
     });
+
+    // Lightbox
+    const galleryImages = document.querySelectorAll(".gallery img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector("#lightbox .close");
+
+    galleryImages.forEach(img => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener("click", () => { lightbox.style.display = "none"; });
+    lightbox.addEventListener("click", e => { if(e.target !== lightboxImg) lightbox.style.display = "none"; });
   </script>
 </body>
 </html>
-
