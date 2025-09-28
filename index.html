@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-    <!-- Import Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="about.html">About</a>
-  <a href="drawings.html">Drawing</a>
-    </nav>
-    <!-- Watercolor Background Blobs -->
-<div class="blob" style="top: 50px; left: 30px;"></div>
-<div class="blob" style="top: 200px; right: 50px; background: radial-gradient(circle, #fdd6d0, #f5f5dc);"></div>
-<div class="blob" style="top: 400px; left: 150px; background: radial-gradient(circle, #c3e4d1, #f5f5dc);"></div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Art Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader"></div>
 
-<!-- Watercolor Brush Stroke (behind h1) -->
-<div class="brush" style="top: 150px; left: 50%; transform: translateX(-50%) rotate(-10deg); background: url('brush-stroke.png') no-repeat center; background-size: cover;"></div>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="drawings.html">Drawings</a>
+  </nav>
 
-    <h1>Hi, I'm Summer~</h1>
-    <img src="1523634246-3268544269_n.jpg" alt="My uploaded picture">
-    <img src="IMG_0196.AVIF" alt="My uploaded picture">
-  </body>
+  <!-- Watercolor decorations -->
+  <div class="blob" style="top: 40px; left: 20px; width: 180px; height: 180px;"></div>
+  <div class="blob" style="top: 300px; right: 60px; width: 220px; height: 220px; background: radial-gradient(circle, #fdd6d0, #f5f5dc);"></div>
+  <div class="blob" style="top: 500px; left: 120px; width: 150px; height: 150px; background: radial-gradient(circle, #c3e4d1, #f5f5dc);"></div>
+  <div class="brush" style="top: 200px; left: 50%; transform: translateX(-50%) rotate(-12deg); width: 300px; height: 120px; background: url('brush-stroke.png') no-repeat center; background-size: cover;"></div>
+  <!-- Page content -->
+  <h1>Welcome to My Art Site</h1>
+  <p>Explore my drawings and creative works!</p>
+
+  <!-- Sample images -->
+  <img src="example1.jpg" alt="Sample artwork">
+  <img src="example2.jpg" alt="Sample artwork">
+
+  <!-- JavaScript -->
+  <script>
+    // Loader
+    window.addEventListener("load", function () {
+      document.querySelector(".loader").classList.add("hidden");
+    });
+  </script>
+</body>
 </html>
-
