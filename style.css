@@ -117,7 +117,7 @@ img:hover {
   border-radius: 50%;
   opacity: 0.5;
   z-index: 0;
-  animation: float 10s ease-in-out infinite alternate;
+  animation: float 15s ease-in-out infinite alternate;
 }
 
 
@@ -128,7 +128,7 @@ img:hover {
   height: 100px;
   opacity: 0.3;
   z-index: 0;
-  animation: paintMove 8s ease-in-out infinite alternate;
+  animation: paintMove 15s ease-in-out infinite alternate;
 }
 
 /* Gallery styling */
@@ -197,9 +197,9 @@ img:hover {
   100% { transform: translateY(0px) translateX(0px); }
 }
 @keyframes paintMove {
-  0% { transform: rotate(-10deg) translateX(0); }
-  50% { transform: rotate(-5deg) translateX(10px); }
-  100% { transform: rotate(-10deg) translateX(0); }
+  0%   { transform: translate(0, 0) rotate(-10deg) scale(1); }
+  50%  { transform: translate(100px, -80px) rotate(-12deg) scale(1.05); }
+  100% { transform: translate(-120px, 90px) rotate(-8deg) scale(1); }
 }
 .particle {
   position: absolute;
