@@ -108,29 +108,6 @@ img:hover {
   transition: opacity 0.5s ease;
 }
 
-/* Floating Watercolor Blobs */
-.blob {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle at 50% 50%, #a8d1bb 0%, #e6e0c3 100%);
-  border-radius: 50%;
-  opacity: 0.5;
-  z-index: 0;
-  animation: float 15s ease-in-out infinite alternate;
-}
-
-
-/* Watercolor Brush Stroke */
-.brush {
-  position: absolute;
-  width: 300px;
-  height: 100px;
-  opacity: 0.3;
-  z-index: 0;
-  animation: paintMove 15s ease-in-out infinite alternate;
-}
-
 /* Gallery styling */
 .gallery {
   display: flex;
@@ -214,3 +191,64 @@ img:hover {
   50% { transform: translateY(-50px) translateX(30px); }
   100% { transform: translateY(0) translateX(0); }
 }
+/* === Brush Strokes === */
+.brush {
+  position: absolute;
+  opacity: 0.85;
+  z-index: 0;
+  background: url('brush-stroke.png') no-repeat center;
+  background-size: cover;
+  animation: brushFloat 18s ease-in-out infinite alternate;
+}
+
+.brush:nth-child(1) {
+  top: 200px; left: 50%;
+  width: 300px; height: 120px;
+  transform: translateX(-50%) rotate(-12deg);
+  animation-duration: 18s;
+}
+.brush:nth-child(2) {
+  top: 400px; left: 20%;
+  width: 250px; height: 100px;
+  transform: rotate(-15deg);
+  animation-duration: 20s;
+}
+.brush:nth-child(3) {
+  top: 100px; right: 15%;
+  width: 280px; height: 110px;
+  transform: rotate(-5deg);
+  animation-duration: 22s;
+}
+
+@keyframes brushFloat {
+  0%   { transform: translate(0, 0) scale(1) rotate(-10deg); }
+  50%  { transform: translate(150px, -120px) scale(1.05) rotate(-12deg); }
+  100% { transform: translate(-160px, 120px) scale(1) rotate(-8deg); }
+}
+
+/* === Blobs === */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.45;
+  z-index: 0;
+  animation: blobFloat 25s ease-in-out infinite alternate;
+}
+
+@keyframes blobFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(180px, -150px) scale(1.2); }
+  100% { transform: translate(-180px, 150px) scale(1); }
+}
+
+/* Blob Colors */
+.blob:nth-child(4)  { top: 50px;  left: 10%;  width: 180px; height: 180px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
+.blob:nth-child(5)  { top: 250px; left: 70%;  width: 160px; height: 160px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
+.blob:nth-child(6)  { top: 500px; left: 30%;  width: 140px; height: 140px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
+.blob:nth-child(7)  { top: 600px; left: 80%;  width: 200px; height: 200px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
+.blob:nth-child(8)  { top: 150px; left: 40%;  width: 120px; height: 120px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
+.blob:nth-child(9)  { top: 700px; left: 15%;  width: 100px; height: 100px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
+.blob:nth-child(10) { top: 350px; left: 5%;   width: 140px; height: 140px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
+.blob:nth-child(11) { top: 800px; left: 60%;  width: 180px; height: 180px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
+.blob:nth-child(12) { top: 450px; left: 90%;  width: 160px; height: 160px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
+.blob:nth-child(13) { top: 650px; left: 35%;  width: 200px; height: 200px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
