@@ -17,6 +17,24 @@
     <a href="about.html">About</a>
     <a href="drawings.html">Drawings</a>
   </nav>
+<!-- Animated Text Logo -->
+<svg class="logo-svg" width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Animated gradient definition -->
+    <linearGradient id="watercolor-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4a373">
+        <animate attributeName="stop-color" values="#d4a373; #faedcd; #d4a373" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#faedcd">
+        <animate attributeName="stop-color" values="#faedcd; #d4a373; #faedcd" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+  </defs>
+
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
+    My Logo
+  </text>
+</svg>
 
   <!-- Watercolor decorations -->
   <!-- Original brush stroke -->
