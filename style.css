@@ -252,3 +252,38 @@ img:hover {
 .blob:nth-child(11) { top: 800px; left: 60%;  width: 180px; height: 180px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
 .blob:nth-child(12) { top: 450px; left: 90%;  width: 160px; height: 160px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
 .blob:nth-child(13) { top: 650px; left: 35%;  width: 200px; height: 200px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
+
+/* Logo container */
+.logo-svg {
+  display: block;
+  margin: 40px auto;
+}
+
+/* Text animation */
+.logo-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 80px;
+  fill: none;                
+  stroke: #6b705c;           
+  stroke-width: 2;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawText 4s ease forwards, fillText 2s ease forwards 4s;
+}
+
+/* Handwriting stroke */
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Fill fade-in */
+@keyframes fillText {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: url(#watercolor-gradient); /* Uses animated gradient */
+  }
+}
