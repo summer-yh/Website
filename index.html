@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Animated Watercolor Logo -->
-<svg class="logo-svg" width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+<!-- Animated Watercolor Logo with Texture -->
+<svg class="logo-svg" width="700" height="200" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Flowing watercolor gradient -->
-    <linearGradient id="watercolor-gradient" x1="0%" y1="0%" x2="200%" y2="0%">
-      <stop offset="0%" stop-color="#d4a373" />
-      <stop offset="50%" stop-color="#faedcd" />
-      <stop offset="100%" stop-color="#d4a373" />
-      <!-- Animate gradient movement -->
-      <animateTransform attributeName="gradientTransform"
-                        attributeType="XML"
-                        type="translate"
-                        from="-200 0" to="200 0"
-                        dur="8s" repeatCount="indefinite" />
-    </linearGradient>
+    <!-- Use Unsplash texture as fill -->
+    <pattern id="watercolor-pattern" patternUnits="userSpaceOnUse" width="800" height="400">
+      <image href="susan-wilkinson-2N3MB7NSHnc-unsplash.jpg" x="0" y="0" width="800" height="400">
+        <!-- Animate the texture moving sideways -->
+        <animateTransform attributeName="transform"
+                          type="translate"
+                          from="-200 0" to="200 0"
+                          dur="12s"
+                          repeatCount="indefinite" />
+      </image>
+    </pattern>
   </defs>
 
-  <!-- Text stroke + fill animation -->
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text" fill="url(#watercolor-gradient)" fill-opacity="0">
+  <!-- Thicker text filled with texture -->
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
+        class="logo-text" fill="url(#watercolor-pattern)" stroke="#6b705c" stroke-width="3">
     My Art Site
-    <!-- Animate fill opacity (appears after stroke) -->
-    <animate attributeName="fill-opacity" from="0" to="1" dur="2s" begin="4s" fill="freeze" />
   </text>
 </svg>
 
