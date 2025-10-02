@@ -257,33 +257,40 @@ img:hover {
 .logo-svg {
   display: block;
   margin: 40px auto;
+  animation: floatLogo 8s ease-in-out infinite;
 }
 
-/* Text animation */
+/* Text stroke + animation */
 .logo-text {
   font-family: 'Dancing Script', cursive;
   font-size: 80px;
-  fill: none;                
-  stroke: #6b705c;           
+  fill: none;                   /* invisible at start */
+  stroke: #6b705c;              /* soft ink outline */
   stroke-width: 2;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: drawText 4s ease forwards, fillText 2s ease forwards 4s;
+  stroke-dasharray: 1000;       /* stroke length */
+  stroke-dashoffset: 1000;      /* hidden stroke */
+  animation: drawText 4s ease forwards; /* stroke writes in */
 }
 
-/* Handwriting stroke */
+/* Stroke writing animation */
 @keyframes drawText {
-  to {
-    stroke-dashoffset: 0;
+  to { stroke-dashoffset: 0; }
+}
+
+/* Floating with a tilt */
+@keyframes floatLogo {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(-1.2deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1.2deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-0.8deg);
   }
 }
 
-/* Fill fade-in */
-@keyframes fillText {
-  from {
-    fill: transparent;
-  }
-  to {
-    fill: url(#watercolor-gradient); /* Uses animated gradient */
-  }
 }
