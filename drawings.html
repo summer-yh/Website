@@ -115,13 +115,41 @@
   <div class="particle" style="top: 400px; left: 40%; background: rgba(195,228,209,0.3); width: 8px; height: 8px;"></div>
 
   <!-- Page content -->
+   <!-- Page content -->
   <h1>My Drawings</h1>
   <p>Click on any drawing to view a larger version!</p>
 
+  <!-- Gallery -->
   <div class="gallery">
     <img src="IMG_2262 2.jpg" alt="Drawing 1">
     <img src="IMG_2260 3.jpg" alt="Drawing 2">
     <img src="IMG_3586.JPG" alt="Drawing 3">
+  </div>
+
+  <!-- Image + Description (side by side) -->
+  <div class="image-container">
+    <img src="IMG_3586.JPG" alt="New Caledonia Beach">
+    <div class="description">
+      <p><strong>New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday</strong></p>
+      <p>
+        The island is about 30 mins from the mainland by ferry, and has a perimeter of 2 km.
+        Our hotel is a Bungalow in the Garden, with twisting paths made of wooden planks
+        leading to each hut in the midst of the shaded, tropical area. After sunset, the paths
+        are lit with lights that cast little bright pools every few steps. Our hut is tucked
+        in a secluded corner, shaded by fern trees and low palm branches.
+      </p>
+      <p>
+        A dust-barren little path led from the undergrowth directly to the beach, with the ocean
+        extending before the eye as far out as they can see. To the right, the city of the
+        mainland perches in the distance, pushing up to form the faint ragged mountains that bit
+        at the horizon. At night, the glittering city lights reflect dimly on the water surface.
+      </p>
+      <p>
+        This picture was taken further down the coast, where jagged, protruding rocks lined the
+        shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows
+        Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water.
+      </p>
+    </div>
   </div>
 
   <!-- Lightbox -->
@@ -137,37 +165,26 @@
       document.querySelector(".loader").classList.add("hidden");
     });
 
-// Lightbox
-const galleryImages = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.querySelector("#lightbox .close");
+    // Lightbox
+    const galleryImages = document.querySelectorAll(".gallery img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector("#lightbox .close");
 
-galleryImages.forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.style.display = "flex"; // Show lightbox
-    lightboxImg.src = img.src;
-  });
-});
-
-// Close when X is clicked
-closeBtn.addEventListener("click", () => {
-  lightbox.style.display = "none";
-});
-
-// Close when clicking outside the image
-lightbox.addEventListener("click", e => {
-  if (e.target !== lightboxImg) lightbox.style.display = "none";
-});
+    galleryImages.forEach(img => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "flex"; // Show lightbox
+        lightboxImg.src = img.src;
+      });
     });
 
-    closeBtn.addEventListener("click", () => { lightbox.style.display = "none"; });
-    lightbox.addEventListener("click", e => { if(e.target !== lightboxImg) lightbox.style.display = "none"; });
-    <div class="image-container">
-  <img src="IMG_3586.JPG" alt="Description">
-  <div class="overlay-text">New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday 
-The island is about 30 mins from the mainland by ferry, and has a perimeter of 2 km. Our hotel is a Bungalow in the Garden, with twisting paths made of wooden planks leading to each hut in the midst of the shaded, tropical area. After sunset, the paths are lit with lights that cast little bright pools every few steps. Our hut is tucked in a secluded corner, shaded by fern trees and low palm branches. A dust-barren little path led from the undergrowth directly to the beach, with the ocean extending before the eye as far out as they can see. To the right, the city of the mainland perches in the distance, pushing up to form the faint ragged mountains that bit at the horizon. At night, the glittering city lights reflects dimly on the water surface. It felt like paradise when I learned I could duck and emerge under the vegetation to the silent, peaceful shore with the waves waxing and waning, ebbing and subsiding in small rolling tides. This picture was taken further down the coast, where jagged, protuding rocks lined the shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water. </div>
-    </div>
+    closeBtn.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+
+    lightbox.addEventListener("click", e => {
+      if (e.target !== lightboxImg) lightbox.style.display = "none";
+    });
   </script>
 </body>
 </html>
