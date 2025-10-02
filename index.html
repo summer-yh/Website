@@ -5,74 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Art Site</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
   <style>
-    /* Logo text styles */
-    .logo-text-mask {
+    /* Text base */
+    .logo-text {
       font-family: 'Dancing Script', cursive;
       font-size: 80px;
       font-weight: 700;
-      fill: white; /* white for mask */
     }
 
+    /* Outline for the drawing effect */
     .logo-outline {
       font-family: 'Dancing Script', cursive;
       font-size: 80px;
       font-weight: 700;
       fill: none;
-      stroke: #5c4033; /* dark brown outline */
+      stroke: #5c4033; /* dark brown ink */
       stroke-width: 2px;
+      stroke-dasharray: 1000;  /* total length of dash */
+      stroke-dashoffset: 1000; /* start hidden */
+      animation: draw-outline 5s ease forwards;
+    }
+
+    /* After drawing, give a slight pulse */
+    @keyframes draw-outline {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* Slight floating motion for the whole logo */
+    .logo-svg {
+      display: block;
+      margin: 40px auto;
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="drawings.html">Drawings</a>
-  </nav>
-
-  <!-- Animated Watercolor Logo -->
+  <!-- Combined Logo -->
   <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <!-- Watercolor texture pattern -->
-      <pattern id="watercolor-texture" patternUnits="userSpaceOnUse" width="800" height="800">
-        <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-               x="0" y="0" width="800" height="800">
-        </image>
-      </pattern>
-
-      <!-- Text mask -->
-      <mask id="text-mask">
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text-mask">
+      <!-- Clip path with the text (for watercolor fill) -->
+      <clipPath id="text-clip">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
           My Art Site
         </text>
-      </mask>
+      </clipPath>
     </defs>
 
-    <!-- Moving watercolor fill -->
-    <rect width="100%" height="100%" fill="url(#watercolor-texture)" mask="url(#text-mask)">
-      <!-- Drift diagonally -->
-      <animateTransform attributeName="transform" type="translate"
-                        values="-150 -50; 150 100; -150 -50"
-                        dur="18s" repeatCount="indefinite"/>
-      <!-- Scale in/out for blotchy effect -->
-      <animateTransform attributeName="transform" additive="sum" type="scale"
-                        values="1; 1.2; 1"
-                        dur="12s" repeatCount="indefinite"/>
-    </rect>
+    <!-- Watercolor texture clipped into text -->
+    <g clip-path="url(#text-clip)">
+      <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+             x="0" y="0" width="1200" height="800">
+        <!-- Drift and scale -->
+        <animateTransform attributeName="transform" type="translate"
+                          values="-150 -50; 150 100; -150 -50"
+                          dur="18s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" additive="sum" type="scale"
+                          values="1; 1.2; 1"
+                          dur="12s" repeatCount="indefinite"/>
+      </image>
+    </g>
 
-    <!-- Outline so text is always visible -->
+    <!-- Outline for sketch/draw animation -->
     <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
       My Art Site
     </text>
   </svg>
-
-  <!-- Page content -->
-  <h1>Welcome to My Art Site</h1>
-  <p>Explore my drawings and creative works!</p>
 
 </body>
 </html>
