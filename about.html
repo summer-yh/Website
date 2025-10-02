@@ -1,32 +1,84 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Animated Watercolor Logo -->
-<svg class="logo-svg" width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <!-- Flowing watercolor gradient -->
-    <linearGradient id="watercolor-gradient" x1="0%" y1="0%" x2="200%" y2="0%">
-      <stop offset="0%" stop-color="#d4a373" />
-      <stop offset="50%" stop-color="#faedcd" />
-      <stop offset="100%" stop-color="#d4a373" />
-      <!-- Animate gradient movement -->
-      <animateTransform attributeName="gradientTransform"
-                        attributeType="XML"
-                        type="translate"
-                        from="-200 0" to="200 0"
-                        dur="8s" repeatCount="indefinite" />
-    </linearGradient>
-  </defs>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Art Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-  <!-- Text with stroke first, then watercolor fill -->
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
-    <tspan fill="url(#watercolor-gradient)" fill-opacity="0">
+  <style>
+    /* Text base */
+    .logo-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 80px;
+      font-weight: 700;
+    }
+
+    /* Outline for the drawing effect */
+    .logo-outline {
+      font-family: 'Dancing Script', cursive;
+      font-size: 80px;
+      font-weight: 700;
+      fill: none;
+      stroke: #5c4033; /* dark brown ink */
+      stroke-width: 2px;
+      stroke-dasharray: 1000;  /* total length of dash */
+      stroke-dashoffset: 1000; /* start hidden */
+      animation: draw-outline 5s ease forwards;
+    }
+
+    /* After drawing, give a slight pulse */
+    @keyframes draw-outline {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* Slight floating motion for the whole logo */
+    .logo-svg {
+      display: block;
+      margin: 40px auto;
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Combined Logo -->
+  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Clip path with the text (for watercolor fill) -->
+      <clipPath id="text-clip">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
+          My Art Site
+        </text>
+      </clipPath>
+    </defs>
+
+    <!-- Watercolor texture clipped into text -->
+    <g clip-path="url(#text-clip)">
+      <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+             x="0" y="0" width="1200" height="800">
+        <!-- Drift and scale -->
+        <animateTransform attributeName="transform" type="translate"
+                          values="-150 -50; 150 100; -150 -50"
+                          dur="18s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" additive="sum" type="scale"
+                          values="1; 1.2; 1"
+                          dur="12s" repeatCount="indefinite"/>
+      </image>
+    </g>
+
+    <!-- Outline for sketch/draw animation -->
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
       My Art Site
-      <!-- Fill appears after stroke animation -->
-      <animate attributeName="fill-opacity" from="0" to="1" dur="2s" begin="4s" fill="freeze" />
-    </tspan>
-  </text>
-</svg>
+    </text>
+  </svg>
 
     <meta charset="UTF-8">
     <title>About Me</title>
