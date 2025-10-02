@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Animated Watercolor Logo with Texture -->
-<svg class="logo-svg" width="700" height="200" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <!-- Use Unsplash texture as fill -->
-    <pattern id="watercolor-pattern" patternUnits="userSpaceOnUse" width="800" height="400">
-      <image href="susan-wilkinson-2N3MB7NSHnc-unsplash.jpg" x="0" y="0" width="800" height="400">
-        <!-- Animate the texture moving sideways -->
-        <animateTransform attributeName="transform"
-                          type="translate"
-                          from="-200 0" to="200 0"
-                          dur="12s"
-                          repeatCount="indefinite" />
-      </image>
-    </pattern>
-  </defs>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Art Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <!-- Thicker text filled with texture -->
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
-        class="logo-text" fill="url(#watercolor-pattern)" stroke="#6b705c" stroke-width="3">
-    My Art Site
-  </text>
-</svg>
+  <!-- Animated Text Logo -->
+  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Watercolor texture as a pattern -->
+      <pattern id="watercolor-texture" patternUnits="userSpaceOnUse" width="800" height="800">
+        <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+               x="0" y="0" width="800" height="800">
+        </image>
+      </pattern>
+
+      <!-- Mask with the text -->
+      <mask id="text-mask">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text-mask">
+          My Art Site
+        </text>
+      </mask>
+    </defs>
+
+    <!-- Watercolor fill inside the text -->
+    <rect width="100%" height="100%" fill="url(#watercolor-texture)" mask="url(#text-mask)">
+      <animateTransform attributeName="transform" type="translate"
+                        from="-100 0" to="100 0"
+                        dur="12s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Text outline (so it's always visible) -->
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
+      My Art Site
+    </text>
+  </svg>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
