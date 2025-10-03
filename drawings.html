@@ -3,148 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art Blog - Drawings</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <title>My Art Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* Logo text */
-    .logo-text {
+    /* General page styling */
+    body {
+      background: #fdf8f5; /* soft watercolor-like background */
+      margin: 0;
       font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
+      text-align: center;
     }
 
-    .logo-outline {
+    /* Navigation */
+    nav {
+      background: #f5e1da;
+      padding: 12px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #5c4033;
+      font-size: 22px;
+      font-family: 'Dancing Script', cursive; /* cursive nav restored */
+    }
+    nav a.active {
+      text-decoration: underline;
+    }
+
+    /* Title */
+    h1 {
       font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
-      fill: none;
-      stroke: #5c4033;
-      stroke-width: 2px;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: draw-outline 5s ease forwards;
-    }
-
-    @keyframes draw-outline {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    .logo-svg {
-      display: block;
-      margin: 40px auto;
-      animation: floaty 6s ease-in-out infinite;
-    }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* Decorations */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.4;
-      animation: floaty 10s ease-in-out infinite;
-    }
-
-    .brush {
-      position: absolute;
-      opacity: 0.6;
-      animation: floaty 15s ease-in-out infinite;
+      font-size: 48px;
+      margin-top: 30px;
+      color: #3d2b1f;
     }
 
     /* Gallery */
     .gallery {
+      margin: 40px auto;
       display: flex;
-      gap: 15px;
-      margin: 20px;
+      justify-content: center;
+      gap: 20px;
       flex-wrap: wrap;
     }
-
     .gallery img {
-      width: 200px;
+      width: 220px;
       height: auto;
+      border-radius: 12px;
       cursor: pointer;
-      border-radius: 8px;
       transition: transform 0.3s;
     }
-
     .gallery img:hover {
       transform: scale(1.05);
     }
 
-    /* Description text (easy to read, left-aligned) */
-    .description {
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      text-align: left;
-      margin: 20px;
-      max-width: 700px;
-    }
-
     /* Lightbox */
-    #lightbox {
+    .lightbox {
       display: none;
       position: fixed;
-      z-index: 999;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      z-index: 10;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      padding: 20px;
     }
-
-    #lightbox img {
-      max-width: 80%;
-      max-height: 80%;
+    .lightbox-content {
+      background: white;
+      padding: 15px;
       border-radius: 10px;
+      max-width: 80%;
+      text-align: left; /* left aligned text */
     }
-
-    #lightbox .close {
+    .lightbox img {
+      max-width: 100%;
+      max-height: 70vh;
+      display: block;
+      margin: 0 auto 15px auto;
+    }
+    .lightbox p {
+      font-family: Arial, sans-serif; /* easy-to-read description */
+      font-size: 16px;
+      color: #333;
+      margin: 0;
+      white-space: pre-line; /* preserve line breaks */
+    }
+    .close {
       position: absolute;
       top: 20px;
       right: 30px;
       font-size: 40px;
-      font-weight: bold;
       color: white;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-
-  <!-- Logo -->
-  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <clipPath id="text-clip">
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
-          My Art Blog
-        </text>
-      </clipPath>
-    </defs>
-
-    <g clip-path="url(#text-clip)">
-      <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-             x="0" y="0" width="1200" height="800">
-        <animateTransform attributeName="transform" type="translate"
-                          values="-150 -50; 150 100; -150 -50"
-                          dur="18s" repeatCount="indefinite"/>
-        <animateTransform attributeName="transform" additive="sum" type="scale"
-                          values="1; 1.2; 1"
-                          dur="12s" repeatCount="indefinite"/>
-      </image>
-    </g>
-
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
-      My Art Blog
-    </text>
-  </svg>
 
   <!-- Navigation -->
   <nav>
@@ -153,54 +110,60 @@
     <a href="drawings.html" class="active">Drawings</a>
   </nav>
 
-  <!-- Decorations -->
-  <div class="blob" style="top: 50px; left: 10%; background: radial-gradient(circle, #f9bfb4, #e6e0c3); width: 180px; height: 180px;"></div>
-  <div class="blob" style="top: 200px; right: 15%; background: radial-gradient(circle, #a8d1bb, #e6e0c3); width: 220px; height: 220px;"></div>
-  <div class="blob" style="top: 400px; left: 40%; background: radial-gradient(circle, #f9bfb4, #e6e0c3); width: 160px; height: 160px;"></div>
-
-  <!-- Page content -->
+  <!-- Title -->
   <h1>My Drawings</h1>
   <p>Click on any drawing to view a larger version!</p>
 
   <!-- Gallery -->
   <div class="gallery">
-    <img src="IMG_2262 2.jpg" alt="Drawing 1">
-    <img src="IMG_2260 3.jpg" alt="Drawing 2">
-   <img src="IMG_3586.JPG" alt="Drawing 3" onclick="openLightbox(this, 'New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday. The island is about 30 mins from the mainland by ferry, and has a perimeter of 2 km. Our hotel is a Bungalow in the Garden, with twisting paths made of wooden planks leading to each hut in the midst of the shaded, tropical area. After sunset, the paths are lit with lights that cast little bright pools every few steps. Our hut is tucked in a secluded corner, shaded by fern trees and low palm branches. A dust-barren little path led from the undergrowth directly to the beach, with the ocean extending before the eye as far out as they can see. To the right, the city of the mainland perches in the distance, pushing up to form the faint ragged mountains that bitat the horizon. At night, the glittering city lights reflect dimly on the water surface. This picture was taken further down the coast, where jagged, protruding rocks lined the shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water.</p>')">
+    <img src="IMG_2262 2.jpg" alt="Drawing 1"
+         onclick="openLightbox(this, 'First drawing: pencil sketch of flowers.')">
+
+    <img src="IMG_2260 3.jpg" alt="Drawing 2"
+         onclick="openLightbox(this, 'Second artwork: watercolor study of a sunset.')">
+
+    <img src="IMG_3586.JPG" alt="Drawing 3"
+         onclick="openLightbox(this, `New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday
+
+The island is about 30 mins from the mainland by ferry, and has a perimeter of 2 km. Our hotel is a Bungalow in the Garden, with twisting paths made of wooden planks leading to each hut in the midst of the shaded, tropical area. After sunset, the paths are lit with lights that cast little bright pools every few steps. Our hut is tucked in a secluded corner, shaded by fern trees and low palm branches.
+
+A dust-barren little path led from the undergrowth directly to the beach, with the ocean extending before the eye as far out as they can see. To the right, the city of the mainland perches in the distance, pushing up to form the faint ragged mountains that bit at the horizon. At night, the glittering city lights reflect dimly on the water surface.
+
+This picture was taken further down the coast, where jagged, protruding rocks lined the shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water.`);">
   </div>
 
   <!-- Lightbox -->
-  <div id="lightbox">
-    <span class="close">&times;</span>
-    <img id="lightbox-img" src="" alt="Large view">
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Large view">
+      <p id="lightbox-caption"></p>
+    </div>
   </div>
 
   <!-- JavaScript -->
   <script>
-    const galleryImages = document.querySelectorAll(".gallery img");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
-    const closeBtn = document.querySelector("#lightbox .close");
+    const lightboxCaption = document.getElementById("lightbox-caption");
 
-    // Open lightbox on click
-    galleryImages.forEach(img => {
-      img.addEventListener("click", () => {
-        lightbox.style.display = "flex";
-        lightboxImg.src = img.src;
-      });
-    });
+    function openLightbox(img, caption) {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+      lightboxCaption.textContent = caption;
+    }
 
-    // Close when clicking the close button
-    closeBtn.addEventListener("click", () => {
+    function closeLightbox() {
       lightbox.style.display = "none";
-    });
+    }
 
-    // Close only if clicking on the background overlay
+    // Close when clicking outside content
     lightbox.addEventListener("click", e => {
       if (e.target === lightbox) {
-        lightbox.style.display = "none";
+        closeLightbox();
       }
     });
   </script>
+
 </body>
 </html>
