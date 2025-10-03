@@ -26,7 +26,7 @@
       font-weight: 700;
       color: #5c4033;
       font-size: 22px;
-      font-family: 'Dancing Script', cursive; /* cursive nav restored */
+      font-family: 'Dancing Script', cursive;
     }
     nav a.active {
       text-decoration: underline;
@@ -76,20 +76,22 @@
       padding: 15px;
       border-radius: 10px;
       max-width: 80%;
-      text-align: left; /* left aligned text */
+      max-height: 85vh;
+      overflow-y: auto;
+      text-align: left;
     }
     .lightbox img {
       max-width: 100%;
-      max-height: 70vh;
+      max-height: 50vh;
       display: block;
       margin: 0 auto 15px auto;
     }
     .lightbox p {
-      font-family: Arial, sans-serif; /* easy-to-read description */
+      font-family: Arial, sans-serif;
       font-size: 16px;
       color: #333;
       margin: 0;
-      white-space: pre-line; /* preserve line breaks */
+      white-space: pre-line;
     }
     .close {
       position: absolute;
@@ -136,33 +138,20 @@ This picture was taken further down the coast, where jagged, protruding rocks li
   <div id="lightbox" class="lightbox">
     <span class="close" onclick="closeLightbox()">&times;</span>
     <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="Large view">
+      <img id="lightbox-img" src="" alt="Expanded drawing">
       <p id="lightbox-caption"></p>
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script>
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const lightboxCaption = document.getElementById("lightbox-caption");
-
-    function openLightbox(img, caption) {
-      lightbox.style.display = "flex";
-      lightboxImg.src = img.src;
-      lightboxCaption.textContent = caption;
+    function openLightbox(imgElement, captionText) {
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = imgElement.src;
+      document.getElementById("lightbox-caption").textContent = captionText;
     }
-
     function closeLightbox() {
-      lightbox.style.display = "none";
+      document.getElementById("lightbox").style.display = "none";
     }
-
-    // Close when clicking outside content
-    lightbox.addEventListener("click", e => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
   </script>
 
 </body>
