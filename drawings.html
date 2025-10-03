@@ -3,160 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* General page styling */
-    body {
-      background: #fdf8f5; /* soft watercolor-like background */
-      margin: 0;
-      font-family: 'Dancing Script', cursive;
-      text-align: center;
-    }
-
-    /* Navigation */
-    nav {
-      background: #f5e1da;
-      padding: 12px;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 700;
-      color: #5c4033;
-      font-size: 22px;
-      font-family: 'Dancing Script', cursive; /* cursive nav restored */
-    }
-    nav a.active {
-      text-decoration: underline;
-    }
-
-    /* Title */
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 48px;
-      margin-top: 30px;
-      color: #3d2b1f;
-    }
-
-    /* Gallery */
-    .gallery {
-      margin: 40px auto;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .gallery img {
-      width: 220px;
-      height: auto;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 10;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 20px;
-    }
-    .lightbox-content {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      max-width: 80%;
-      text-align: left; /* left aligned text */
-    }
-    .lightbox img {
-      max-width: 100%;
-      max-height: 70vh;
-      display: block;
-      margin: 0 auto 15px auto;
-    }
-    .lightbox p {
-      font-family: Arial, sans-serif; /* easy-to-read description */
-      font-size: 16px;
-      color: #333;
-      margin: 0;
-    }
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 40px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+  <title>My Art Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Navigation -->
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
-    <a href="drawings.html" class="active">Drawings</a>
+    <a href="drawings.html">Drawings</a>
   </nav>
 
-  <!-- Title -->
-  <h1>My Drawings</h1>
-  <p>Click on any drawing to view a larger version!</p>
+  <!-- Logo -->
+  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <mask id="text-mask">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text-mask">
+          My Art Site
+        </text>
+      </mask>
+    </defs>
 
-  <!-- Gallery -->
+    <!-- Animated stroke text -->
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
+      My Art Site
+    </text>
+  </svg>
+
+  <!-- Page content -->
+  <h1>Welcome to My Art Site</h1>
+  <p>Explore my drawings and creative works!</p>
+
+  <!-- Image gallery -->
   <div class="gallery">
-    <img src="IMG_2262 2.jpg" alt="Drawing 1"
-         onclick="openLightbox(this, 'First drawing: pencil sketch of flowers.')">
-
-    <img src="IMG_2260 3.jpg" alt="Drawing 2"
-         onclick="openLightbox(this, 'Second artwork: watercolor study of a sunset.')">
-
-    <img src="IMG_3586.JPG" alt="Drawing 3"
-         onclick="openLightbox(this, 'New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday. The island is about 30 mins from the mainland by ferry... (full description here).')">
+    <img src="IMG_0196.AVIF" alt="Sample artwork 1" onclick="openLightbox(this, 'First drawing: pencil sketch of flowers.')">
+    <img src="1523634246-3268544269_n.jpg" alt="Sample artwork 2" onclick="openLightbox(this, 'Second artwork: watercolor study of a sunset.')">
+    <img src="susan-wilkinson-2N3MB7NSHnc-unsplash.jpg" alt="Sample artwork 3" onclick="openLightbox(this, 'Third piece: abstract watercolor blotches.')">
   </div>
 
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
     <span class="close" onclick="closeLightbox()">&times;</span>
     <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="Large view">
+      <img id="lightbox-img" src="" alt="Enlarged artwork">
       <p id="lightbox-caption"></p>
     </div>
   </div>
 
   <!-- JavaScript -->
   <script>
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const lightboxCaption = document.getElementById("lightbox-caption");
-
     function openLightbox(img, caption) {
-      lightbox.style.display = "flex";
-      lightboxImg.src = img.src;
-      lightboxCaption.textContent = caption;
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = img.src;
+      document.getElementById("lightbox-caption").innerText = caption;
     }
 
     function closeLightbox() {
-      lightbox.style.display = "none";
+      document.getElementById("lightbox").style.display = "none";
     }
-
-    // Close when clicking outside content
-    lightbox.addEventListener("click", e => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
   </script>
-
 </body>
 </html>
