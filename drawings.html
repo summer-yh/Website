@@ -13,12 +13,15 @@
       margin: 0;
       font-family: 'Dancing Script', cursive;
       text-align: center;
+      overflow-x: hidden;
     }
 
     /* Navigation */
     nav {
       background: #f5e1da;
       padding: 12px;
+      position: relative;
+      z-index: 5;
     }
     nav a {
       margin: 0 15px;
@@ -32,12 +35,62 @@
       text-decoration: underline;
     }
 
+    /* Logo */
+    .logo-svg {
+      width: 320px;
+      height: 120px;
+      margin: 40px auto 10px auto;
+      display: block;
+    }
+    .logo-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 48px;
+      stroke: #5c4033;
+      stroke-width: 2px;
+      fill: none;
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: draw 3.5s ease forwards, float 4s ease-in-out infinite;
+    }
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Watercolor texture overlay (soft moving feel) */
+    .watercolor-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: url('susan-wilkinson-2N3MB7NSHnc-unsplash.jpg') repeat;
+      background-size: cover;
+      opacity: 0.08;
+      animation: moveWatercolor 25s linear infinite;
+      z-index: 0;
+    }
+    @keyframes moveWatercolor {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-10%, -10%); }
+    }
+
     /* Title */
     h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 48px;
       margin-top: 30px;
       color: #3d2b1f;
+      position: relative;
+      z-index: 5;
+    }
+
+    p {
+      position: relative;
+      z-index: 5;
     }
 
     /* Gallery */
@@ -47,6 +100,8 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 5;
     }
     .gallery img {
       width: 220px;
@@ -54,6 +109,7 @@
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.3s;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -79,11 +135,15 @@
       max-height: 85vh;
       overflow-y: auto;
       text-align: left;
+      animation: fadeIn 0.4s ease forwards;
     }
-    /* Narrower version for long descriptions */
     .lightbox-content.narrow {
       max-width: 60%;
       line-height: 1.6;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .lightbox img {
@@ -109,7 +169,11 @@
     }
   </style>
 </head>
+
 <body>
+
+  <!-- Subtle watercolor background -->
+  <div class="watercolor-overlay"></div>
 
   <!-- Navigation -->
   <nav>
@@ -117,6 +181,13 @@
     <a href="about.html">About</a>
     <a href="drawings.html" class="active">Drawings</a>
   </nav>
+
+  <!-- Floating Logo -->
+  <svg class="logo-svg" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
+      My Art Site
+    </text>
+  </svg>
 
   <!-- Title -->
   <h1>My Drawings</h1>
@@ -138,8 +209,9 @@ The island is about 30 mins from the mainland by ferry, and has a perimeter of 2
 A dust-barren little path led from the undergrowth directly to the beach, with the ocean extending before the eye as far out as they can see. To the right, the city of the mainland perches in the distance, pushing up to form the faint ragged mountains that bit at the horizon. At night, the glittering city lights reflect dimly on the water surface.
 
 This picture was taken further down the coast, where jagged, protruding rocks lined the shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water.`, true)">
+
     <img src="IMG_9790.jpg" alt="Drawing 4"
-      onclick="openLightbox(this, 'Turtle from snorkeling at Bungalow Over the Water')">
+         onclick="openLightbox(this, 'Turtle from snorkeling at Bungalow Over the Water')">
   </div>
 
   <!-- Lightbox -->
