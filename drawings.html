@@ -7,20 +7,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* Background base */
+    /* Animated gradient background */
     body {
-      margin: 0;
-      background: #fdf3ec;
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Dancing Script', cursive; /* cursive font */
       text-align: center;
+      background: linear-gradient(270deg, #f5f5dc, #e8dfc7, #f5f5dc);
+      background-size: 600% 600%;
+      margin: 0;
+      padding: 0;
+      animation: gradientShift 15s ease infinite;
+      color: #333;
       overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* Loader */
     .loader {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: #fdf3ec;
+      background: #f5f5dc;
       z-index: 1000;
       transition: opacity 0.8s ease;
     }
@@ -78,7 +88,7 @@
       text-decoration: underline;
     }
 
-    /* Brushes (animated background strokes) */
+    /* Brushes */
     .brush {
       position: absolute;
       background: rgba(245, 225, 218, 0.4);
@@ -92,7 +102,7 @@
       100% { transform: translateX(-100px); }
     }
 
-    /* Floating watercolor blobs */
+    /* Blobs */
     .blob {
       position: absolute;
       border-radius: 50%;
@@ -226,7 +236,7 @@
   <!-- Brushes -->
   <div class="brush"></div><div class="brush"></div><div class="brush"></div>
 
-  <!-- Watercolor Blobs -->
+  <!-- Blobs -->
   <div class="blob"></div><div class="blob"></div><div class="blob"></div>
 
   <!-- Page Content -->
