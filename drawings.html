@@ -9,7 +9,7 @@
   <style>
     /* General page styling */
     body {
-      background: #fdf8f5; /* soft watercolor-like background */
+      background: #fdf8f5;
       margin: 0;
       font-family: 'Dancing Script', cursive;
       text-align: center;
@@ -73,13 +73,19 @@
     }
     .lightbox-content {
       background: white;
-      padding: 15px;
-      border-radius: 10px;
+      padding: 20px;
+      border-radius: 12px;
       max-width: 80%;
       max-height: 85vh;
       overflow-y: auto;
       text-align: left;
     }
+    /* Narrower version for long descriptions */
+    .lightbox-content.narrow {
+      max-width: 60%;
+      line-height: 1.6;
+    }
+
     .lightbox img {
       max-width: 100%;
       max-height: 50vh;
@@ -119,36 +125,47 @@
   <!-- Gallery -->
   <div class="gallery">
     <img src="IMG_2262 2.jpg" alt="Drawing 1"
-         onclick="openLightbox(this, 'Pen sketch of The Little Giant')">
+         onclick="openLightbox(this, 'First drawing: pencil sketch of flowers.')">
 
     <img src="IMG_2260 3.jpg" alt="Drawing 2"
-         onclick="openLightbox(this, 'Pen sketch of Hinata Shoyo')">
+         onclick="openLightbox(this, 'Second artwork: watercolor study of a sunset.')">
 
     <img src="IMG_3586.JPG" alt="Drawing 3"
-         onclick="openLightbox(this, `Watercolor of New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday
+         onclick="openLightbox(this, `New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday
 
 The island is about 30 mins from the mainland by ferry, and has a perimeter of 2 km. Our hotel is a Bungalow in the Garden, with twisting paths made of wooden planks leading to each hut in the midst of the shaded, tropical area. After sunset, the paths are lit with lights that cast little bright pools every few steps. Our hut is tucked in a secluded corner, shaded by fern trees and low palm branches.
 
 A dust-barren little path led from the undergrowth directly to the beach, with the ocean extending before the eye as far out as they can see. To the right, the city of the mainland perches in the distance, pushing up to form the faint ragged mountains that bit at the horizon. At night, the glittering city lights reflect dimly on the water surface.
 
-This picture was taken further down the coast, where jagged, protruding rocks lined the shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water.`);">
+This picture was taken further down the coast, where jagged, protruding rocks lined the shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water.`, true)">
   </div>
 
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
     <span class="close" onclick="closeLightbox()">&times;</span>
-    <div class="lightbox-content">
+    <div id="lightbox-content" class="lightbox-content">
       <img id="lightbox-img" src="" alt="Expanded drawing">
       <p id="lightbox-caption"></p>
     </div>
   </div>
 
   <script>
-    function openLightbox(imgElement, captionText) {
-      document.getElementById("lightbox").style.display = "flex";
+    function openLightbox(imgElement, captionText, isLong = false) {
+      const lightbox = document.getElementById("lightbox");
+      const content = document.getElementById("lightbox-content");
+
+      // Apply narrower style for long descriptions
+      if (isLong) {
+        content.classList.add("narrow");
+      } else {
+        content.classList.remove("narrow");
+      }
+
       document.getElementById("lightbox-img").src = imgElement.src;
       document.getElementById("lightbox-caption").textContent = captionText;
+      lightbox.style.display = "flex";
     }
+
     function closeLightbox() {
       document.getElementById("lightbox").style.display = "none";
     }
