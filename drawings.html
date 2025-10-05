@@ -3,73 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <title>My Art Blog - Drawings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* General page styling */
+    /* Background base */
     body {
-      background: linear-gradient(180deg, #fffce8 0%, #fdf8f5 100%);
       margin: 0;
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-      color: #3d2b1f;
-    }
-
-    /* Handwritten animated logo */
-    .logo {
+      background: #fdf3ec;
       font-family: 'Dancing Script', cursive;
-      font-size: 64px;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fdf3ec;
+      z-index: 1000;
+      transition: opacity 0.8s ease;
+    }
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Logo */
+    .logo-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 80px;
       font-weight: 700;
-      margin-top: 30px;
-      color: #5c4033;
-      position: relative;
-      display: inline-block;
-      animation: write 4s steps(40, end);
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid #5c4033;
+    }
+    .logo-outline {
+      font-family: 'Dancing Script', cursive;
+      font-size: 80px;
+      font-weight: 700;
+      fill: none;
+      stroke: #5c4033;
+      stroke-width: 2px;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw-outline 5s ease forwards;
+    }
+    @keyframes draw-outline {
+      to { stroke-dashoffset: 0; }
+    }
+    .logo-svg {
+      display: block;
+      margin: 40px auto;
+      animation: floaty 6s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
     }
 
-    @keyframes write {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    /* Navigation bar */
+    /* Navigation */
     nav {
-      background: #e5e3e3;
-      padding: 10px 0;
-      margin-top: 15px;
+      background: #f5e1da;
+      padding: 12px;
+      position: relative;
+      z-index: 10;
     }
     nav a {
-      margin: 0 20px;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: 700;
       color: #5c4033;
-      font-family: 'Dancing Script', cursive;
       font-size: 22px;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #009688;
+      font-family: 'Dancing Script', cursive;
     }
     nav a.active {
-      border-bottom: 2px solid #009688;
-      padding-bottom: 2px;
+      text-decoration: underline;
     }
 
-    /* Page title */
+    /* Brushes (animated background strokes) */
+    .brush {
+      position: absolute;
+      background: rgba(245, 225, 218, 0.4);
+      width: 100%;
+      height: 100%;
+      animation: brushmove 60s linear infinite alternate;
+      z-index: -2;
+    }
+    @keyframes brushmove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100px); }
+    }
+
+    /* Floating watercolor blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(255, 200, 180, 0.4), transparent 70%);
+      animation: blobmove 25s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes blobmove {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.1); }
+    }
+
+    .blob:nth-child(4) { top: 10%; left: 10%; width: 200px; height: 200px; animation-delay: 0s; }
+    .blob:nth-child(5) { top: 50%; left: 80%; width: 300px; height: 300px; animation-delay: 5s; }
+    .blob:nth-child(6) { top: 80%; left: 40%; width: 250px; height: 250px; animation-delay: 10s; }
+
+    /* Title */
     h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 48px;
-      margin-top: 40px;
-      color: #3d2b1f;
-    }
-
-    p {
-      font-family: 'Dancing Script', cursive;
-      font-size: 20px;
+      margin-top: 20px;
       color: #3d2b1f;
     }
 
@@ -80,7 +124,8 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      padding-bottom: 60px;
+      z-index: 1;
+      position: relative;
     }
     .gallery img {
       width: 220px;
@@ -88,7 +133,6 @@
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.3s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -98,7 +142,7 @@
     .lightbox {
       display: none;
       position: fixed;
-      z-index: 10;
+      z-index: 100;
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.8);
       justify-content: center;
@@ -144,8 +188,33 @@
 </head>
 <body>
 
-  <!-- Logo -->
-  <div class="logo">My Art Blog</div>
+  <!-- Loader -->
+  <div class="loader"></div>
+
+  <!-- Animated Logo -->
+  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="text-clip">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
+          My Art Site
+        </text>
+      </clipPath>
+    </defs>
+    <g clip-path="url(#text-clip)">
+      <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+             x="0" y="0" width="1200" height="800">
+        <animateTransform attributeName="transform" type="translate"
+                          values="-150 -50; 150 100; -150 -50"
+                          dur="18s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" additive="sum" type="scale"
+                          values="1; 1.2; 1"
+                          dur="12s" repeatCount="indefinite"/>
+      </image>
+    </g>
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
+      My Art Blog
+    </text>
+  </svg>
 
   <!-- Navigation -->
   <nav>
@@ -154,11 +223,16 @@
     <a href="drawings.html" class="active">Drawings</a>
   </nav>
 
-  <!-- Title -->
+  <!-- Brushes -->
+  <div class="brush"></div><div class="brush"></div><div class="brush"></div>
+
+  <!-- Watercolor Blobs -->
+  <div class="blob"></div><div class="blob"></div><div class="blob"></div>
+
+  <!-- Page Content -->
   <h1>My Drawings</h1>
   <p>Click on any drawing to view a larger version!</p>
 
-  <!-- Gallery -->
   <div class="gallery">
     <img src="IMG_2262 2.jpg" alt="Drawing 1"
          onclick="openLightbox(this, 'Pen sketch of The Little Giant')">
@@ -189,21 +263,23 @@ This picture was taken further down the coast, where jagged, protruding rocks li
   </div>
 
   <script>
+    // Loader fade-out
+    window.addEventListener("load", function () {
+      document.querySelector(".loader").classList.add("hidden");
+    });
+
     function openLightbox(imgElement, captionText, isLong = false) {
       const lightbox = document.getElementById("lightbox");
       const content = document.getElementById("lightbox-content");
       if (isLong) content.classList.add("narrow");
       else content.classList.remove("narrow");
-
       document.getElementById("lightbox-img").src = imgElement.src;
       document.getElementById("lightbox-caption").textContent = captionText;
       lightbox.style.display = "flex";
     }
-
     function closeLightbox() {
       document.getElementById("lightbox").style.display = "none";
     }
   </script>
-
 </body>
 </html>
