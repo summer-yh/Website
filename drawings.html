@@ -4,93 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Art Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     /* General page styling */
     body {
-      background: #fdf8f5;
+      background: linear-gradient(180deg, #fffce8 0%, #fdf8f5 100%);
       margin: 0;
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Playfair Display', serif;
       text-align: center;
-      overflow-x: hidden;
+      color: #3d2b1f;
     }
 
-    /* Navigation */
-    nav {
-      background: #f5e1da;
-      padding: 12px;
+    /* Handwritten animated logo */
+    .logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 64px;
+      font-weight: 700;
+      margin-top: 30px;
+      color: #5c4033;
       position: relative;
-      z-index: 5;
+      display: inline-block;
+      animation: write 4s steps(40, end);
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #5c4033;
+    }
+
+    @keyframes write {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Navigation bar */
+    nav {
+      background: #e5e3e3;
+      padding: 10px 0;
+      margin-top: 15px;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
       font-weight: 700;
       color: #5c4033;
-      font-size: 22px;
       font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #009688;
     }
     nav a.active {
-      text-decoration: underline;
+      border-bottom: 2px solid #009688;
+      padding-bottom: 2px;
     }
 
-    /* Logo */
-    .logo-svg {
-      width: 320px;
-      height: 120px;
-      margin: 40px auto 10px auto;
-      display: block;
-    }
-    .logo-text {
-      font-family: 'Dancing Script', cursive;
-      font-size: 48px;
-      stroke: #5c4033;
-      stroke-width: 2px;
-      fill: none;
-      stroke-dasharray: 500;
-      stroke-dashoffset: 500;
-      animation: draw 3.5s ease forwards, float 4s ease-in-out infinite;
-    }
-    @keyframes draw {
-      to { stroke-dashoffset: 0; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    /* Watercolor texture overlay (soft moving feel) */
-    .watercolor-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      background: url('susan-wilkinson-2N3MB7NSHnc-unsplash.jpg') repeat;
-      background-size: cover;
-      opacity: 0.08;
-      animation: moveWatercolor 25s linear infinite;
-      z-index: 0;
-    }
-    @keyframes moveWatercolor {
-      from { transform: translate(0, 0); }
-      to { transform: translate(-10%, -10%); }
-    }
-
-    /* Title */
+    /* Page title */
     h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 48px;
-      margin-top: 30px;
+      margin-top: 40px;
       color: #3d2b1f;
-      position: relative;
-      z-index: 5;
     }
 
     p {
-      position: relative;
-      z-index: 5;
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px;
+      color: #3d2b1f;
     }
 
     /* Gallery */
@@ -100,8 +80,7 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      position: relative;
-      z-index: 5;
+      padding-bottom: 60px;
     }
     .gallery img {
       width: 220px;
@@ -109,7 +88,7 @@
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.3s;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -135,17 +114,11 @@
       max-height: 85vh;
       overflow-y: auto;
       text-align: left;
-      animation: fadeIn 0.4s ease forwards;
     }
     .lightbox-content.narrow {
       max-width: 60%;
       line-height: 1.6;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
     .lightbox img {
       max-width: 100%;
       max-height: 50vh;
@@ -169,11 +142,10 @@
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Subtle watercolor background -->
-  <div class="watercolor-overlay"></div>
+  <!-- Logo -->
+  <div class="logo">My Art Blog</div>
 
   <!-- Navigation -->
   <nav>
@@ -181,13 +153,6 @@
     <a href="about.html">About</a>
     <a href="drawings.html" class="active">Drawings</a>
   </nav>
-
-  <!-- Floating Logo -->
-  <svg class="logo-svg" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
-      My Art Site
-    </text>
-  </svg>
 
   <!-- Title -->
   <h1>My Drawings</h1>
@@ -227,13 +192,8 @@ This picture was taken further down the coast, where jagged, protruding rocks li
     function openLightbox(imgElement, captionText, isLong = false) {
       const lightbox = document.getElementById("lightbox");
       const content = document.getElementById("lightbox-content");
-
-      // Apply narrower style for long descriptions
-      if (isLong) {
-        content.classList.add("narrow");
-      } else {
-        content.classList.remove("narrow");
-      }
+      if (isLong) content.classList.add("narrow");
+      else content.classList.remove("narrow");
 
       document.getElementById("lightbox-img").src = imgElement.src;
       document.getElementById("lightbox-caption").textContent = captionText;
