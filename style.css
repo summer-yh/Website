@@ -136,15 +136,19 @@ nav a.active::after {
   margin: 40px auto;
   position: relative;
   z-index: 10;
+  max-width: 1000px; /* prevents gallery from overflowing screen */
 }
 .gallery img {
-  width: 250px;
+  width: 250px;           /* keeps images small */
+  max-width: 100%;        /* ensures responsive on small screens */
+  height: auto;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, filter 0.5s ease;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 .gallery img:hover {
-  transform: scale(1.05);
+  transform: none;        /* disable enlargement */
   filter: brightness(1.05) saturate(1.05);
 }
 
