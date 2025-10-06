@@ -302,4 +302,27 @@ img:hover {
   75% {
     transform: translateY(-8px) rotate(-0.8deg);
   }
+  /* --- Fix unwanted pink background --- */
+
+/* Ensure the entire page has the same soft beige-green tone */
+html, body {
+  background: linear-gradient(270deg, #f5f5dc, #e8dfc7, #f5f5dc);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove any leftover section colors */
+main, section, .gallery, .drawings, .content, .wrapper {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* Optional: Make sure the nav bar blends smoothly */
+nav {
+  background: rgba(255, 255, 255, 0.3); /* light transparent white overlay */
+  backdrop-filter: blur(6px);
+}
+
 }
