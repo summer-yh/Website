@@ -139,16 +139,17 @@ nav a.active::after {
   max-width: 1000px; /* prevents gallery from overflowing screen */
 }
 .gallery img {
-  width: 250px;           /* keeps images small */
-  max-width: 100%;        /* ensures responsive on small screens */
+  width: 180px;           /* smaller than before */
+  max-width: 100%;        /* keeps them responsive on small screens */
   height: auto;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
   cursor: pointer;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
+
 .gallery img:hover {
-  transform: none;        /* disable enlargement */
+  transform: none;        /* disables hover scaling */
   filter: brightness(1.05) saturate(1.05);
 }
 
