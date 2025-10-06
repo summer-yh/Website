@@ -9,6 +9,17 @@ body {
   animation: gradientShift 15s ease infinite;
   color: #333;
 }
+  /* Remove any pink background from sections or containers */
+section, main, .content, .gallery, .drawings {
+  background: transparent !important;
+}
+
+/* Optional: set entire page background consistent */
+html {
+  background: linear-gradient(270deg, #f5f5dc, #e8dfc7, #f5f5dc);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+}
 
 /* Navigation menu */
 nav {
