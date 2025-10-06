@@ -94,12 +94,14 @@
 
     /* Brushes */
     .brush {
-      position: absolute;
-      background: rgba(245, 225, 218, 0.4);
-      width: 100%;
-      height: 100%;
-      animation: brushmove 60s linear infinite alternate;
-      z-index: -2;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15); /* soft transparent white */
+  width: 100%;
+  height: 100%;
+  animation: brushmove 60s linear infinite alternate;
+  z-index: -2;
+}
+
     }
     @keyframes brushmove {
       0% { transform: translateX(0); }
@@ -110,7 +112,7 @@
     .blob {
       position: absolute;
       border-radius: 50%;
-      background: radial-gradient(circle at center, rgba(255, 200, 180, 0.4), transparent 70%);
+      background: radial-gradient(circle at center, rgba(240, 240, 220, 0.4), transparent 70%);
       animation: blobmove 25s ease-in-out infinite;
       z-index: -1;
     }
