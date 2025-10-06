@@ -14,12 +14,6 @@ html, body {
   color: #333;
 }
 
-/* keep main sections transparent so no stray pinks show up */
-main, section, .content, .wrapper, .drawings {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
 /* gradient keyframes */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -275,11 +269,4 @@ nav a.active::after {
   0%   { transform: translate(0, 0) rotate(-10deg) scale(1); }
   50%  { transform: translate(100px, -80px) rotate(-12deg) scale(1.05); }
   100% { transform: translate(-120px, 90px) rotate(-8deg) scale(1); }
-}
-
-/* Prevent pink overlays: strongly override common pink color classes */
-.bg-pink, .pink, .hero, header, .hero-section {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
 }
