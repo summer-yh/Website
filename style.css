@@ -240,6 +240,63 @@ p {
   margin-bottom: 28px;
 }
 
+.map-section {
+  margin-bottom: 28px;
+}
+
+.map-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(92, 64, 51, 0.08);
+}
+
+.world-map-wrap {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 24px;
+  padding: 10px;
+}
+
+.world-map {
+  width: 100%;
+  min-height: 480px;
+  height: 480px;
+  display: block;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.map-list {
+  display: grid;
+  gap: 14px;
+}
+
+.map-list-item {
+  background: rgba(248, 244, 232, 0.95);
+  border-radius: 18px;
+  padding: 16px 16px 12px;
+}
+
+.map-list-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.45rem;
+  color: #3b8686;
+  text-align: left;
+}
+
+.map-list-item p {
+  margin-bottom: 8px;
+  text-align: left;
+  font-size: 1.1rem;
+  font-family: Arial, sans-serif;
+}
+
 .travel-grid {
   display: grid;
   gap: 24px;
@@ -487,6 +544,7 @@ p {
   }
 
   .profile-card,
+  .map-card,
   .travel-entry {
     grid-template-columns: 1fr;
   }
@@ -494,6 +552,11 @@ p {
   .travel-gallery {
     grid-template-columns: 1fr;
     max-height: none;
+  }
+
+  .world-map {
+    min-height: 360px;
+    height: 360px;
   }
 
   .travel-shot img {
