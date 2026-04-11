@@ -1,112 +1,65 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-
-  <style>
-    /* Text base */
-    .logo-text {
-      font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
-    }
-
-    /* Outline for the drawing effect */
-    .logo-outline {
-      font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
-      fill: none;
-      stroke: #5c4033; /* dark brown ink */
-      stroke-width: 2px;
-      stroke-dasharray: 1000;  /* total length of dash */
-      stroke-dashoffset: 1000; /* start hidden */
-      animation: draw-outline 5s ease forwards;
-    }
-
-    /* After drawing, give a slight pulse */
-    @keyframes draw-outline {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    /* Slight floating motion for the whole logo */
-    .logo-svg {
-      display: block;
-      margin: 40px auto;
-      animation: floaty 6s ease-in-out infinite;
-    }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-  </style>
+  <title>About | Summer's Art Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="site-header">
+    <svg class="logo-svg" viewBox="0 0 600 200" aria-label="Summer's Art Site logo" role="img" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="text-clip-about">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-fill-text">
+            Summer's Art Site
+          </text>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#text-clip-about)">
+        <image
+          href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          x="0"
+          y="0"
+          width="1200"
+          height="800">
+          <animateTransform attributeName="transform" type="translate" values="-150 -50; 150 100; -150 -50" dur="18s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" additive="sum" type="scale" values="1; 1.2; 1" dur="12s" repeatCount="indefinite"/>
+        </image>
+      </g>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
+        Summer's Art Site
+      </text>
+    </svg>
 
-  <!-- Combined Logo -->
-  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <!-- Clip path with the text (for watercolor fill) -->
-      <clipPath id="text-clip">
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
-          My Art Blog
-        </text>
-      </clipPath>
-    </defs>
-
-    <!-- Watercolor texture clipped into text -->
-    <g clip-path="url(#text-clip)">
-      <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-             x="0" y="0" width="1200" height="800">
-        <!-- Drift and scale -->
-        <animateTransform attributeName="transform" type="translate"
-                          values="-150 -50; 150 100; -150 -50"
-                          dur="18s" repeatCount="indefinite"/>
-        <animateTransform attributeName="transform" additive="sum" type="scale"
-                          values="1; 1.2; 1"
-                          dur="12s" repeatCount="indefinite"/>
-      </image>
-    </g>
-
-    <!-- Outline for sketch/draw animation -->
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
-      My Art Blog
-    </text>
-  </svg>
-
-    <meta charset="UTF-8">
-    <title>About Me</title>
-    <!-- Import Google Font -->
-   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html" class="active">About</a>
-  <a href="drawings.html">Drawing</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="drawings.html">Drawings</a>
+      <a href="travel.html">Travel</a>
     </nav>
-    <!-- Watercolor Background Blobs -->
-<div class="blob" style="top: 50px; left: 10%; background: radial-gradient(circle, #f9bfb4, #e6e0c3);"></div>
-<div class="blob" style="top: 200px; right: 15%; background: radial-gradient(circle, #a8d1bb, #e6e0c3);"></div>
-<div class="blob" style="top: 400px; left: 40%; background: radial-gradient(circle, #f9bfb4, #e6e0c3);"></div>
-    
-<div class="particle" style="top: 50px; left: 10%; background: rgba(195,228,209,0.4); width: 10px; height: 10px;"></div>
-<div class="particle" style="top: 200px; left: 80%; background: rgba(253,214,208,0.4); width: 12px; height: 12px;"></div>
-<div class="particle" style="top: 400px; left: 40%; background: rgba(195,228,209,0.3); width: 8px; height: 8px;"></div>
+  </header>
 
-    <h1>About Me</h1>
-    <p>Hi! My name is Summer.</p>
-    <p>I love learning new things, playing violin and writing.</p>
-    <p>Some of my hobbies include reading, drawing and travelling~ 
-    <p>This website will showcase my drawings and blogs.</p>
-    <img src="IMG_4486.jpg" alt="My uploaded picture">
-  </body>
+  <div class="blob" data-i="1"></div>
+  <div class="blob" data-i="2"></div>
+  <div class="blob" data-i="3"></div>
+
+  <main class="page-shell">
+    <section class="profile-card">
+      <div class="profile-copy">
+        <p class="eyebrow">About Me</p>
+        <h1>Hi, I'm Summer.</h1>
+        <p class="lead">I love learning new things, playing the violin, writing, and making art.</p>
+        <p>
+          Some of my favorite hobbies are reading, drawing, and travelling. This website is where I share
+          my drawings, travel memories, and creative work in one place.
+        </p>
+      </div>
+      <img class="profile-image" src="IMG_4486.jpg" alt="Portrait of Summer smiling outdoors">
+    </section>
+  </main>
+</body>
 </html>

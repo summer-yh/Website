@@ -1,31 +1,24 @@
-/* ===========================
-   Page base + animated gradient
-   =========================== */
-html, body {
+html,
+body {
   font-family: 'Dancing Script', cursive;
-  text-align: center;
   margin: 0;
   padding: 0;
-
-  /* Animated beige/green gradient (your requested BG) */
+  min-height: 100%;
   background: linear-gradient(270deg, #f5f5dc, #e8dfc7, #f5f5dc);
   background-size: 600% 600%;
   animation: gradientShift 15s ease infinite;
   color: #333;
+  overflow-x: hidden;
 }
 
-/* gradient keyframes */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ===========================
-   Loader
-   =========================== */
 .loader {
-  border: 8px solid rgba(0,0,0,0.06);
+  border: 8px solid rgba(0, 0, 0, 0.06);
   border-top: 8px solid #3b8686;
   border-radius: 50%;
   width: 60px;
@@ -39,33 +32,39 @@ html, body {
   animation: spin 1s linear infinite;
   background: none;
 }
+
 .loader.hidden {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease;
 }
 
-/* ===========================
-   Navigation
-   =========================== */
+.site-header {
+  position: relative;
+  z-index: 2;
+}
+
 nav {
-  background: rgba(255,255,255,0.85); /* lightbar that blends with gradient */
+  background: rgba(255, 255, 255, 0.85);
   padding: 15px 0;
   z-index: 50;
   position: relative;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
   backdrop-filter: blur(4px);
+  text-align: center;
 }
+
 nav a {
   margin: 0 15px;
   text-decoration: none;
   font-size: 22px;
-  color: #5c4033; /* brown-ish nav text */
+  color: #5c4033;
   position: relative;
   padding-bottom: 6px;
   font-family: 'Dancing Script', cursive;
   transition: color 0.2s ease;
 }
+
 nav a::after {
   content: '';
   position: absolute;
@@ -73,34 +72,40 @@ nav a::after {
   bottom: 0;
   width: 0%;
   height: 2px;
-  background-color: #3b8686; /* teal underline */
+  background-color: #3b8686;
   transition: width 0.3s ease-in-out;
 }
-nav a:hover::after {
-  width: 100%;
-}
-nav a.active {
-  color: #3b8686;
-  font-weight: 700;
-}
+
+nav a:hover::after,
 nav a.active::after {
   width: 100%;
 }
 
-/* ===========================
-   Logo (SVG) and handwriting animation
-   =========================== */
+nav a.active {
+  color: #3b8686;
+  font-weight: 700;
+}
+
 .logo-svg {
   display: block;
-  margin: 40px auto;
+  width: min(600px, calc(100vw - 32px));
+  height: auto;
+  margin: 40px auto 24px;
   animation: floatLogo 8s ease-in-out infinite;
   z-index: 60;
 }
 
-/* Text stroke animation (SVG text style) */
-.logo-text {
+.logo-fill-text,
+.logo-outline {
   font-family: 'Dancing Script', cursive;
   font-size: 80px;
+}
+
+.logo-fill-text {
+  fill: #ffffff;
+}
+
+.logo-outline {
   fill: none;
   stroke: #6b705c;
   stroke-width: 2;
@@ -109,12 +114,10 @@ nav a.active::after {
   animation: drawText 4s ease forwards;
 }
 
-/* Keyframes for stroke writing */
 @keyframes drawText {
   to { stroke-dashoffset: 0; }
 }
 
-/* Floating with a subtle tilt */
 @keyframes floatLogo {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   25% { transform: translateY(-10px) rotate(-1.2deg); }
@@ -122,41 +125,193 @@ nav a.active::after {
   75% { transform: translateY(-8px) rotate(-0.8deg); }
 }
 
-/* Remove any caret/typing cursor effect: ensure no border-right on logo elements */
-.logo, .logo-text, .logo-outline { border-right: none !important; }
+.logo,
+.logo-fill-text,
+.logo-outline {
+  border-right: none !important;
+}
 
-/* ===========================
-   Gallery / images / fade-in
-   =========================== */
+.page-shell {
+  width: min(1100px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 24px 0 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-card,
+.profile-card,
+.gallery-section,
+.travel-entry {
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  box-shadow: 0 20px 40px rgba(92, 64, 51, 0.08);
+}
+
+.hero-card,
+.gallery-section {
+  padding: 32px 24px;
+}
+
+.profile-card {
+  padding: 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.section-heading,
+.hero-card,
+.profile-copy {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: #3b8686;
+}
+
+h1,
+h2 {
+  color: #3d2b1f;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+p {
+  font-size: 1.45rem;
+  line-height: 1.5;
+  margin: 0 0 14px;
+  text-align: center;
+}
+
+.lead {
+  font-size: clamp(1.35rem, 2.3vw, 1.8rem);
+  line-height: 1.45;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin: 40px auto;
+  margin: 32px auto 0;
   position: relative;
   z-index: 10;
-  max-width: 1000px; /* prevents gallery from overflowing screen */
+  max-width: 1000px;
 }
+
 .gallery img {
-  width: 180px;           /* smaller than before */
-  max-width: 100%;        /* keeps them responsive on small screens */
+  width: 220px;
+  max-width: 100%;
   height: auto;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .gallery img:hover {
-  transform: none;        /* disables hover scaling */
+  transform: translateY(-4px);
   filter: brightness(1.05) saturate(1.05);
 }
 
-/* ===========================
-   Lightbox
-   =========================== */
-#lightbox {
+.profile-image {
+  width: 100%;
+  max-width: 360px;
+  justify-self: center;
+  border-radius: 24px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+}
+
+.travel-hero {
+  margin-bottom: 28px;
+}
+
+.travel-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.travel-entry {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+  gap: 20px;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.travel-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 210px;
+  max-height: 260px;
+}
+
+.travel-shot {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.travel-shot img {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  max-height: 260px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.travel-shot:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.04);
+}
+
+.travel-copy {
+  padding: 24px 22px 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.travel-copy h2,
+.travel-copy p {
+  text-align: left;
+}
+
+.travel-copy h2 {
+  margin: 0 0 10px;
+}
+
+.travel-meta {
+  margin-bottom: 6px;
+  color: #3b8686;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+}
+
+#lightbox,
+.lightbox {
   display: none;
   position: fixed;
   z-index: 2000;
@@ -164,18 +319,26 @@ nav a.active::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
-#lightbox img {
-  max-width: 90%;
-  max-height: 80%;
+
+#lightbox img,
+.lightbox img {
+  max-width: 100%;
+  max-height: 70vh;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.08);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
   animation: fadeInUp 0.6s ease;
+  display: block;
+  margin: 0 auto 15px;
 }
-#lightbox .close {
+
+#lightbox .close,
+.lightbox .close {
   position: absolute;
   top: 30px;
   right: 50px;
@@ -183,24 +346,39 @@ nav a.active::after {
   color: white;
   cursor: pointer;
   transition: color 0.3s ease;
+  background: transparent;
+  border: 0;
 }
-#lightbox .close:hover { color: #3b8686; }
 
-/* Lightbox content box (caption area) */
+#lightbox .close:hover,
+.lightbox .close:hover {
+  color: #3b8686;
+}
+
 .lightbox-content {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  max-width: 80%;
+  max-width: min(760px, 88vw);
   max-height: 85vh;
   overflow-y: auto;
   text-align: left;
 }
-.lightbox-content.narrow { max-width: 60%; }
 
-/* ===========================
-   Brushes & blobs (background decorations)
-   =========================== */
+.lightbox-content.narrow {
+  max-width: min(640px, 82vw);
+}
+
+.lightbox-content p,
+.lightbox p {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  white-space: pre-line;
+  text-align: left;
+}
+
 .brush {
   position: absolute;
   opacity: 0.85;
@@ -211,31 +389,38 @@ nav a.active::after {
 }
 
 .brush:nth-of-type(1) {
-  top: 200px; left: 50%;
-  width: 300px; height: 120px;
+  top: 200px;
+  left: 50%;
+  width: 300px;
+  height: 120px;
   transform: translateX(-50%) rotate(-12deg);
   animation-duration: 18s;
 }
+
 .brush:nth-of-type(2) {
-  top: 400px; left: 20%;
-  width: 250px; height: 100px;
+  top: 400px;
+  left: 20%;
+  width: 250px;
+  height: 100px;
   transform: rotate(-15deg);
   animation-duration: 20s;
 }
+
 .brush:nth-of-type(3) {
-  top: 100px; right: 15%;
-  width: 280px; height: 110px;
+  top: 100px;
+  right: 15%;
+  width: 280px;
+  height: 110px;
   transform: rotate(-5deg);
   animation-duration: 22s;
 }
 
 @keyframes brushFloat {
-  0%   { transform: translate(0, 0) scale(1) rotate(-10deg); }
-  50%  { transform: translate(150px, -120px) scale(1.05) rotate(-12deg); }
+  0% { transform: translate(0, 0) scale(1) rotate(-10deg); }
+  50% { transform: translate(150px, -120px) scale(1.05) rotate(-12deg); }
   100% { transform: translate(-160px, 120px) scale(1) rotate(-8deg); }
 }
 
-/* blobs */
 .blob {
   position: absolute;
   border-radius: 50%;
@@ -243,35 +428,94 @@ nav a.active::after {
   z-index: 0;
   animation: blobFloat 25s ease-in-out infinite alternate;
 }
+
 @keyframes blobFloat {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(180px, -150px) scale(1.2); }
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(180px, -150px) scale(1.2); }
   100% { transform: translate(-180px, 150px) scale(1); }
 }
 
-/* define blob colors/positions (safe selectors) */
-.blob[data-i="1"] { top: 50px;  left: 10%;  width: 180px; height: 180px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
-.blob[data-i="2"] { top: 250px; left: 70%;  width: 160px; height: 160px; background: radial-gradient(circle, #f9bfb4, #e6e0c3); }
-.blob[data-i="3"] { top: 500px; left: 30%;  width: 140px; height: 140px; background: radial-gradient(circle, #a8d1bb, #e6e0c3); }
+.blob[data-i="1"] {
+  top: 50px;
+  left: 10%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #a8d1bb, #e6e0c3);
+}
 
-/* ===========================
-   Misc animations & helpers
-   =========================== */
+.blob[data-i="2"] {
+  top: 250px;
+  left: 70%;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, #f9bfb4, #e6e0c3);
+}
+
+.blob[data-i="3"] {
+  top: 500px;
+  left: 30%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, #a8d1bb, #e6e0c3);
+}
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-@keyframes float {
-  0% { transform: translateY(0px) translateX(0px); }
-  50% { transform: translateY(-20px) translateX(10px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-@keyframes paintMove {
-  0%   { transform: translate(0, 0) rotate(-10deg) scale(1); }
-  50%  { transform: translate(100px, -80px) rotate(-12deg) scale(1.05); }
-  100% { transform: translate(-120px, 90px) rotate(-8deg) scale(1); }
+
+@media (max-width: 760px) {
+  nav a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 20px;
+  }
+
+  .page-shell {
+    width: min(100vw - 24px, 1100px);
+  }
+
+  .hero-card,
+  .gallery-section,
+  .profile-card {
+    padding: 24px 18px;
+  }
+
+  .profile-card,
+  .travel-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-gallery {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .travel-shot img {
+    max-height: 220px;
+  }
+
+  .travel-copy {
+    padding: 0 18px 22px;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .lightbox-content,
+  .lightbox-content.narrow {
+    max-width: 100%;
+  }
+
+  #lightbox .close,
+  .lightbox .close {
+    top: 12px;
+    right: 18px;
+  }
 }

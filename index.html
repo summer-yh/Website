@@ -3,128 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-
-  <style>
-    /* Text base */
-    .logo-text {
-      font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
-    }
-
-    /* Outline for the drawing effect */
-    .logo-outline {
-      font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
-      fill: none;
-      stroke: #5c4033; /* dark brown ink */
-      stroke-width: 2px;
-      stroke-dasharray: 1000;  /* total length of dash */
-      stroke-dashoffset: 1000; /* start hidden */
-      animation: draw-outline 5s ease forwards;
-    }
-
-    /* After drawing, give a slight pulse */
-    @keyframes draw-outline {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    /* Slight floating motion for the whole logo */
-    .logo-svg {
-      display: block;
-      margin: 40px auto;
-      animation: floaty 6s ease-in-out infinite;
-    }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Combined Logo -->
-  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <!-- Clip path with the text (for watercolor fill) -->
-      <clipPath id="text-clip">
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
-          My Art Blog
-        </text>
-      </clipPath>
-    </defs>
-
-    <!-- Watercolor texture clipped into text -->
-    <g clip-path="url(#text-clip)">
-      <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-             x="0" y="0" width="1200" height="800">
-        <!-- Drift and scale -->
-        <animateTransform attributeName="transform" type="translate"
-                          values="-150 -50; 150 100; -150 -50"
-                          dur="18s" repeatCount="indefinite"/>
-        <animateTransform attributeName="transform" additive="sum" type="scale"
-                          values="1; 1.2; 1"
-                          dur="12s" repeatCount="indefinite"/>
-      </image>
-    </g>
-
-    <!-- Outline for sketch/draw animation -->
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
-      My Art Blog
-    </text>
-  </svg>
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art Site</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
+  <title>Summer's Art Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Loader -->
-  <div class="loader"></div>
+  <div class="loader" aria-hidden="true"></div>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="drawings.html">Drawings</a>
-  </nav>
-  <!-- Original brush stroke -->
- <!-- Brushes -->
-<div class="brush"></div>
-<div class="brush"></div>
-<div class="brush"></div>
+  <header class="site-header">
+    <svg class="logo-svg" viewBox="0 0 600 200" aria-label="Summer's Art Site logo" role="img" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="text-clip-home">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-fill-text">
+            Summer's Art Site
+          </text>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#text-clip-home)">
+        <image
+          href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          x="0"
+          y="0"
+          width="1200"
+          height="800">
+          <animateTransform attributeName="transform" type="translate" values="-150 -50; 150 100; -150 -50" dur="18s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" additive="sum" type="scale" values="1; 1.2; 1" dur="12s" repeatCount="indefinite"/>
+        </image>
+      </g>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
+        Summer's Art Site
+      </text>
+    </svg>
 
-<!-- Blobs -->
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="drawings.html">Drawings</a>
+      <a href="travel.html">Travel</a>
+    </nav>
+  </header>
 
-<!-- Page content -->
-  <!-- Page content -->
-  <h1>Welcome to My Art Blog</h1>
-  <p>Explore my drawings and creative works!</p>
+  <div class="brush"></div>
+  <div class="brush"></div>
+  <div class="brush"></div>
+  <div class="blob" data-i="1"></div>
+  <div class="blob" data-i="2"></div>
+  <div class="blob" data-i="3"></div>
 
-  <!-- Sample images -->
-  <img src="IMG_0196.AVIF" alt="Sample artwork">
-  <img src="1523634246-3268544269_n.jpg" alt="Sample artwork">
+  <main class="page-shell">
+    <section class="hero-card">
+      <p class="eyebrow">Welcome</p>
+      <h1>Art, sketches, and stories from Summer</h1>
+      <p class="lead">
+        This portfolio shares my drawings, creative experiments, and travel memories in one calm little space.
+      </p>
+    </section>
 
-  <!-- JavaScript -->
+    <section class="gallery-section" aria-labelledby="featured-work-title">
+      <div class="section-heading">
+        <h2 id="featured-work-title">Featured Work</h2>
+        <p>A quick look at some of the art featured on the site.</p>
+      </div>
+      <div class="gallery">
+        <img src="IMG_0196.AVIF" alt="A featured artwork from Summer's portfolio">
+        <img src="1523634246-3268544269_n.jpg" alt="A second featured artwork from Summer's portfolio">
+      </div>
+    </section>
+  </main>
+
   <script>
-    // Loader
     window.addEventListener("load", function () {
       document.querySelector(".loader").classList.add("hidden");
     });

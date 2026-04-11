@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel | Summer's Art Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loader" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <svg class="logo-svg" viewBox="0 0 600 200" aria-label="Summer's Art Site logo" role="img" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="text-clip-travel">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-fill-text">
+            Summer's Art Site
+          </text>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#text-clip-travel)">
+        <image
+          href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          x="0"
+          y="0"
+          width="1200"
+          height="800">
+          <animateTransform attributeName="transform" type="translate" values="-150 -50; 150 100; -150 -50" dur="18s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" additive="sum" type="scale" values="1; 1.2; 1" dur="12s" repeatCount="indefinite"/>
+        </image>
+      </g>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
+        Summer's Art Site
+      </text>
+    </svg>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="drawings.html">Drawings</a>
+      <a href="travel.html" class="active">Travel</a>
+    </nav>
+  </header>
+
+  <div class="blob" data-i="1"></div>
+  <div class="blob" data-i="2"></div>
+  <div class="blob" data-i="3"></div>
+
+  <main class="page-shell">
+    <section class="gallery-section travel-hero">
+      <p class="eyebrow">Travel Diary</p>
+      <h1>Bali, Indonesia</h1>
+      <p class="lead">
+        A few favorite places from my trip to Bali, captured through photos and short diary notes.
+      </p>
+    </section>
+
+    <section class="travel-grid" aria-label="Travel entries">
+      <article class="travel-entry">
+        <div class="travel-gallery">
+          <button
+            class="travel-shot"
+            type="button"
+            aria-label="Open photo of Unagi Mas Villas pool and villa exterior"
+            onclick="openTravelLightbox('IMG_7327.JPG', 'Unagi Mas Villas pool and villa exterior')">
+            <img src="IMG_7327.JPG" alt="Unagi Mas Villas pool and villa exterior">
+          </button>
+          <button
+            class="travel-shot"
+            type="button"
+            aria-label="Open photo of Unagi Mas Villas bedroom interior"
+            onclick="openTravelLightbox('IMG_7332.JPG', 'Unagi Mas Villas bedroom interior')">
+            <img src="IMG_7332.JPG" alt="Unagi Mas Villas bedroom interior">
+          </button>
+        </div>
+        <div class="travel-copy">
+          <p class="travel-meta">Bali, Indonesia</p>
+          <h2>Unagi Mas Villas</h2>
+          <p>
+            Unagi Mas Villas felt like a quiet retreat. The villa was beautiful, with a lovely pool
+            and cozy bedrooms that made it feel peaceful and private at the same time.
+          </p>
+          <p>
+            It was the kind of place that immediately made the trip feel slower, softer, and more relaxing.
+          </p>
+        </div>
+      </article>
+
+      <article class="travel-entry">
+        <div class="travel-gallery">
+          <button
+            class="travel-shot"
+            type="button"
+            aria-label="Open photo of the Ubud Monkey Forest tropical pathways"
+            onclick="openTravelLightbox('IMG_7361.JPG', 'Ubud Monkey Forest tropical pathways')">
+            <img src="IMG_7361.JPG" alt="Ubud Monkey Forest tropical pathways">
+          </button>
+          <button
+            class="travel-shot"
+            type="button"
+            aria-label="Open photo of monkeys in the Ubud Monkey Forest"
+            onclick="openTravelLightbox('IMG_7372.JPG', 'Monkeys in the Ubud Monkey Forest')">
+            <img src="IMG_7372.JPG" alt="Monkeys in the Ubud Monkey Forest">
+          </button>
+        </div>
+        <div class="travel-copy">
+          <p class="travel-meta">Bali, Indonesia</p>
+          <h2>Ubud Monkey Forest</h2>
+          <p>
+            The Monkey Forest felt full of life. It was lush, green, and shaded by tropical trees,
+            with monkeys everywhere and winding paths that made the whole place feel immersive.
+          </p>
+          <p>
+            It was one of those places where every corner seemed to have a little movement, sound, or surprise.
+          </p>
+        </div>
+      </article>
+
+      <article class="travel-entry">
+        <div class="travel-gallery">
+          <button
+            class="travel-shot"
+            type="button"
+            aria-label="Open photo of colorful details at Ubud Palace"
+            onclick="openTravelLightbox('IMG_7421.jpg', 'Colorful details at Ubud Palace')">
+            <img src="IMG_7421.jpg" alt="Colorful details at Ubud Palace">
+          </button>
+          <button
+            class="travel-shot"
+            type="button"
+            aria-label="Open photo of historical architecture at Ubud Palace"
+            onclick="openTravelLightbox('IMG_7425.JPG', 'Historical architecture at Ubud Palace')">
+            <img src="IMG_7425.JPG" alt="Historical architecture at Ubud Palace">
+          </button>
+        </div>
+        <div class="travel-copy">
+          <p class="travel-meta">Bali, Indonesia</p>
+          <h2>Ubud Palace</h2>
+          <p>
+            Ubud Palace stood out because of its exquisite historical monuments and the richness of its colors.
+            The carved details and ornate decorations made the whole place feel vibrant and full of history.
+          </p>
+          <p>
+            It felt like a place where architecture and atmosphere worked together beautifully.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div id="travel-lightbox" class="lightbox" aria-hidden="true">
+    <button class="close" type="button" aria-label="Close expanded travel photo" onclick="closeTravelLightbox()">&times;</button>
+    <div class="lightbox-content">
+      <img id="travel-lightbox-img" src="" alt="">
+      <p id="travel-lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("load", function () {
+      document.querySelector(".loader").classList.add("hidden");
+    });
+
+    function openTravelLightbox(src, altText) {
+      const lightbox = document.getElementById("travel-lightbox");
+      const image = document.getElementById("travel-lightbox-img");
+      const caption = document.getElementById("travel-lightbox-caption");
+
+      image.src = src;
+      image.alt = altText;
+      caption.textContent = altText;
+      lightbox.style.display = "flex";
+      lightbox.setAttribute("aria-hidden", "false");
+    }
+
+    function closeTravelLightbox() {
+      const lightbox = document.getElementById("travel-lightbox");
+      lightbox.style.display = "none";
+      lightbox.setAttribute("aria-hidden", "true");
+    }
+
+    document.getElementById("travel-lightbox").addEventListener("click", function (event) {
+      if (event.target.id === "travel-lightbox") {
+        closeTravelLightbox();
+      }
+    });
+  </script>
+</body>
+</html>

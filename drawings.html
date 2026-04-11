@@ -3,272 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art Blog - Drawings</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* Animated gradient background */
-    body {
-      font-family: 'Dancing Script', cursive;
-      text-align: center;
-      background: linear-gradient(270deg, #f2e9cc, #e6ddba, #f2e9cc);
-      background-size: 600% 600%;
-      margin: 0;
-      padding: 0;
-      animation: gradientShift 15s ease infinite;
-      color: #333;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Loader */
-    .loader {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #f5f5dc;
-      z-index: 1000;
-      transition: opacity 0.8s ease;
-    }
-    .loader.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* Logo */
-    .logo-text {
-      font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
-    }
-    .logo-outline {
-      font-family: 'Dancing Script', cursive;
-      font-size: 80px;
-      font-weight: 700;
-      fill: none;
-      stroke: #5c4033;
-      stroke-width: 2px;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: draw-outline 5s ease forwards;
-    }
-    @keyframes draw-outline {
-      to { stroke-dashoffset: 0; }
-    }
-    .logo-svg {
-      display: block;
-      margin: 40px auto;
-      animation: floaty 6s ease-in-out infinite;
-    }
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* Navigation */
-    nav {
-      background: #ddd;
-      padding: 12px;
-      position: relative;
-      z-index: 10;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 700;
-      color: #3b8686;
-      font-size: 22px;
-      font-family: 'Dancing Script', cursive;
-    }
-    nav a.active {
-      font-weight: bold;
-      color: #3b8686;
-    }
-
-    /* --- Removed Brush Animations --- */
-    .brush { display: none; }
-
-    /* Blobs */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, rgba(240, 240, 220, 0.4), transparent 70%);
-      animation: blobmove 25s ease-in-out infinite;
-      z-index: -1;
-    }
-    @keyframes blobmove {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-30px) scale(1.1); }
-    }
-
-    /* Add more blobs for depth */
-    .blob:nth-child(4) { top: 10%; left: 10%; width: 200px; height: 200px; animation-delay: 0s; }
-    .blob:nth-child(5) { top: 40%; left: 80%; width: 300px; height: 300px; animation-delay: 5s; }
-    .blob:nth-child(6) { top: 70%; left: 30%; width: 250px; height: 250px; animation-delay: 10s; }
-    .blob:nth-child(7) { top: 20%; left: 50%; width: 180px; height: 180px; animation-delay: 3s; }
-    .blob:nth-child(8) { top: 60%; left: 10%; width: 220px; height: 220px; animation-delay: 8s; }
-    .blob:nth-child(9) { top: 85%; left: 75%; width: 200px; height: 200px; animation-delay: 12s; }
-
-    /* Title */
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 48px;
-      margin-top: 20px;
-      color: #3d2b1f;
-    }
-
-    /* Gallery */
-    .gallery {
-      margin: 40px auto;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      z-index: 1;
-      position: relative;
-      max-width: 1100px;
-    }
-    .gallery img {
-      width: 220px;
-      height: auto;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 20px;
-    }
-    .lightbox-content {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 80%;
-      max-height: 85vh;
-      overflow-y: auto;
-      text-align: left;
-    }
-    .lightbox-content.narrow {
-      max-width: 60%;
-      line-height: 1.6;
-    }
-    .lightbox img {
-      max-width: 100%;
-      max-height: 50vh;
-      display: block;
-      margin: 0 auto 15px auto;
-    }
-    .lightbox p {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: #333;
-      margin: 0;
-      white-space: pre-line;
-    }
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 40px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+  <title>Drawings | Summer's Art Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="loader" aria-hidden="true"></div>
 
-  <!-- Loader -->
-  <div class="loader"></div>
+  <header class="site-header">
+    <svg class="logo-svg" viewBox="0 0 600 200" aria-label="Summer's Art Site logo" role="img" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="text-clip-drawings">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-fill-text">
+            Summer's Art Site
+          </text>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#text-clip-drawings)">
+        <image
+          href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          x="0"
+          y="0"
+          width="1200"
+          height="800">
+          <animateTransform attributeName="transform" type="translate" values="-150 -50; 150 100; -150 -50" dur="18s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" additive="sum" type="scale" values="1; 1.2; 1" dur="12s" repeatCount="indefinite"/>
+        </image>
+      </g>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
+        Summer's Art Site
+      </text>
+    </svg>
 
-  <!-- Animated Logo -->
-  <svg class="logo-svg" width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <clipPath id="text-clip">
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
-          My Art Site
-        </text>
-      </clipPath>
-    </defs>
-    <g clip-path="url(#text-clip)">
-      <image href="https://images.unsplash.com/photo-1549887534-4a3b1c8a4c3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-             x="0" y="0" width="1200" height="800">
-        <animateTransform attributeName="transform" type="translate"
-                          values="-150 -50; 150 100; -150 -50"
-                          dur="18s" repeatCount="indefinite"/>
-        <animateTransform attributeName="transform" additive="sum" type="scale"
-                          values="1; 1.2; 1"
-                          dur="12s" repeatCount="indefinite"/>
-      </image>
-    </g>
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-outline">
-      My Art Blog
-    </text>
-  </svg>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="drawings.html" class="active">Drawings</a>
+      <a href="travel.html">Travel</a>
+    </nav>
+  </header>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="drawings.html" class="active">Drawings</a>
-  </nav>
+  <div class="blob" data-i="1"></div>
+  <div class="blob" data-i="2"></div>
+  <div class="blob" data-i="3"></div>
 
-  <!-- Brushes -->
-  <div class="brush"></div><div class="brush"></div><div class="brush"></div>
+  <main class="page-shell">
+    <section class="gallery-section" aria-labelledby="drawings-title">
+      <div class="section-heading">
+        <p class="eyebrow">Gallery</p>
+        <h1 id="drawings-title">My Drawings</h1>
+        <p>Click any artwork to see a larger view and read a short caption.</p>
+      </div>
 
-  <!-- Blobs -->
-  <div class="blob"></div><div class="blob"></div><div class="blob"></div>
+      <div class="gallery">
+        <img src="IMG_2262 2.jpg" alt="Pen sketch of The Little Giant" onclick="openLightbox(this, 'Pen sketch of The Little Giant')">
+        <img src="IMG_2260 3.jpg" alt="Pen sketch of Hinata Shoyo" onclick="openLightbox(this, 'Pen sketch of Hinata Shoyo')">
+        <img
+          src="IMG_3586.JPG"
+          alt="Beach scene in New Caledonia with bungalows and turquoise water"
+          onclick="openLightbox(this, `New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday
 
-  <!-- Page Content -->
-  <h1>My Drawings</h1>
-  <p>Click on any drawing to view a larger version!</p>
+The island is about 30 minutes from the mainland by ferry, and has a perimeter of 2 km. Our hotel was a bungalow in the garden, with twisting wooden paths leading to each hut in the shade of tropical plants.
 
-  <div class="gallery">
-    <img src="IMG_2262 2.jpg" alt="Drawing 1"
-         onclick="openLightbox(this, 'Pen sketch of The Little Giant')">
+This picture was taken further down the coast, where rocks lined the shoreline and palm trees framed the sand. In the distance, the bungalows stretched over the water in a neat row, surrounded by clear turquoise waves.`, true)">
+        <img src="IMG_9790.jpg" alt="Sea turtle seen while snorkeling near the bungalows" onclick="openLightbox(this, 'Turtle seen while snorkeling near the Bungalow Over the Water')">
+      </div>
+    </section>
+  </main>
 
-    <img src="IMG_2260 3.jpg" alt="Drawing 2"
-         onclick="openLightbox(this, 'Pen sketch of Hinata Shoyo')">
-
-    <img src="IMG_3586.JPG" alt="Drawing 3"
-         onclick="openLightbox(this, `New Caledonia beach, DoubleTree Bungalow Over the Water, 2025/10/2 holiday
-
-The island is about 30 mins from the mainland by ferry, and has a perimeter of 2 km. Our hotel is a Bungalow in the Garden, with twisting paths made of wooden planks leading to each hut in the midst of the shaded, tropical area. After sunset, the paths are lit with lights that cast little bright pools every few steps. Our hut is tucked in a secluded corner, shaded by fern trees and low palm branches.
-
-A dust-barren little path led from the undergrowth directly to the beach, with the ocean extending before the eye as far out as they can see. To the right, the city of the mainland perches in the distance, pushing up to form the faint ragged mountains that bit at the horizon. At night, the glittering city lights reflect dimly on the water surface.
-
-This picture was taken further down the coast, where jagged, protruding rocks lined the shoreline, and palm trees framed the edge of the sands. In the near distance, the Bungalows Over the Water rose out of the ocean in a neat row, surrounded by the clear turquoise water.`, true)">
-
-    <img src="IMG_9790.jpg" alt="Drawing 4"
-         onclick="openLightbox(this, 'Turtle from snorkeling at Bungalow Over the Water')">
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <span class="close" onclick="closeLightbox()">&times;</span>
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="close" type="button" aria-label="Close expanded artwork" onclick="closeLightbox()">&times;</button>
     <div id="lightbox-content" class="lightbox-content">
-      <img id="lightbox-img" src="" alt="Expanded drawing">
+      <img id="lightbox-img" src="" alt="">
       <p id="lightbox-caption"></p>
     </div>
   </div>
 
   <script>
-    // Loader fade-out
     window.addEventListener("load", function () {
       document.querySelector(".loader").classList.add("hidden");
     });
@@ -276,15 +89,27 @@ This picture was taken further down the coast, where jagged, protruding rocks li
     function openLightbox(imgElement, captionText, isLong = false) {
       const lightbox = document.getElementById("lightbox");
       const content = document.getElementById("lightbox-content");
-      if (isLong) content.classList.add("narrow");
-      else content.classList.remove("narrow");
-      document.getElementById("lightbox-img").src = imgElement.src;
+      const lightboxImg = document.getElementById("lightbox-img");
+
+      content.classList.toggle("narrow", isLong);
+      lightboxImg.src = imgElement.src;
+      lightboxImg.alt = imgElement.alt;
       document.getElementById("lightbox-caption").textContent = captionText;
       lightbox.style.display = "flex";
+      lightbox.setAttribute("aria-hidden", "false");
     }
+
     function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
+      const lightbox = document.getElementById("lightbox");
+      lightbox.style.display = "none";
+      lightbox.setAttribute("aria-hidden", "true");
     }
+
+    document.getElementById("lightbox").addEventListener("click", function (event) {
+      if (event.target.id === "lightbox") {
+        closeLightbox();
+      }
+    });
   </script>
 </body>
 </html>
