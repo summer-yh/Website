@@ -302,6 +302,51 @@ p {
   gap: 24px;
 }
 
+.diary-section {
+  margin-top: 28px;
+}
+
+.diary-entry-card {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  gap: 24px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.diary-image-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.diary-image {
+  width: 100%;
+  max-width: 460px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.14);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.diary-image:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.02);
+}
+
+.diary-copy h3 {
+  margin: 0 0 10px;
+  color: #3d2b1f;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.diary-copy p {
+  text-align: left;
+}
+
 .travel-entry {
   display: grid;
   grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
@@ -545,7 +590,8 @@ p {
 
   .profile-card,
   .map-card,
-  .travel-entry {
+  .travel-entry,
+  .diary-entry-card {
     grid-template-columns: 1fr;
   }
 
@@ -565,6 +611,10 @@ p {
 
   .travel-copy {
     padding: 0 18px 22px;
+  }
+
+  .diary-image {
+    max-width: 100%;
   }
 
   p {
